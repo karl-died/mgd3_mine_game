@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkxwkuhp7bqhp"]
+
+[ext_resource type="Texture2D" uid="uid://d1hn622vchysn" path="res://assets/light_cone.png" id="1_mrd6q"]
+
+[node name="lamp" type="Node2D"]
+position = Vector2(118, 40)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 36.0
+offset_bottom = 36.0
+scale = Vector2(0.20314, 0.204579)
+color = Color(0.631715, 0.631715, 0.631715, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(4, -1)
+rotation = -1.5708
+scale = Vector2(2.18, 2.18)
+shadow_enabled = true
+texture = ExtResource("1_mrd6q")
+offset = Vector2(0, 25.6)
+texture_scale = 0.1

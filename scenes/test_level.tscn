@@ -3,10 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://dsv07d2qx1uah" path="res://assets/mine_env.png" id="1_s027j"]
 [ext_resource type="PackedScene" uid="uid://xxeru74qvcwv" path="res://scenes/player_rat.tscn" id="2_knecj"]
 [ext_resource type="Script" path="res://scripts/smooth_camera.gd" id="3_pcq1e"]
-[ext_resource type="Shader" path="res://materials/shader/darken_background.gdshader" id="4_th324"]
 [ext_resource type="Shader" path="res://materials/shader/color_grade.gdshader" id="4_xs7ha"]
 [ext_resource type="Texture2D" uid="uid://dprs2w0a1dtu3" path="res://assets/rat_idle.png" id="6_8pare"]
+[ext_resource type="PackedScene" uid="uid://bqs4hpkmk22cw" path="res://scenes/test_npc.tscn" id="7_u4d5n"]
 [ext_resource type="Texture2D" uid="uid://ce0nfe72gsopm" path="res://assets/rat_idle_n.png" id="7_vcu4n"]
+[ext_resource type="PackedScene" uid="uid://dkxwkuhp7bqhp" path="res://scenes/lamp.tscn" id="8_4hc3x"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5mhfa"]
 polygon = PackedVector2Array(-6.6875, 8, -3.375, 3.6875, 1.8125, 0.625, 3.5625, -3.4375, 8, -6.4375, 8, 8)
@@ -230,9 +231,6 @@ gradient = SubResource("Gradient_kq4so")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kaw2a"]
-shader = ExtResource("4_th324")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dnfmb"]
 shader = ExtResource("4_xs7ha")
 
@@ -367,32 +365,10 @@ shadow_item_cull_mask = 2
 [node name="PlayerRat" parent="." instance=ExtResource("2_knecj")]
 position = Vector2(-295, -40)
 
-[node name="PointLight2D10" type="PointLight2D" parent="PlayerRat"]
-visible = false
-scale = Vector2(4.48727, 4.28734)
-color = Color(0.88, 0.816933, 0.5016, 1)
-energy = 1.07
-shadow_enabled = true
-texture = SubResource("GradientTexture2D_3pckc")
-height = 20.0
-
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("character")]
 position = Vector2(-51, -17)
 script = ExtResource("3_pcq1e")
 character = NodePath("../PlayerRat")
-
-[node name="CanvasLayer2" type="CanvasLayer" parent="Camera2D"]
-visible = false
-
-[node name="ColorGrading" type="ColorRect" parent="Camera2D/CanvasLayer2"]
-visible = false
-material = SubResource("ShaderMaterial_kaw2a")
-offset_left = -13.6896
-offset_top = -0.000129202
-offset_right = 26.3104
-offset_bottom = 39.9999
-scale = Vector2(12.6896, 7.46736)
-metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
 
@@ -409,3 +385,36 @@ visible = false
 texture_filter = 1
 position = Vector2(-110, -45)
 texture = SubResource("CanvasTexture_byle4")
+
+[node name="NPC" parent="." node_paths=PackedStringArray("paths_node") instance=ExtResource("7_u4d5n")]
+z_index = 1
+position = Vector2(104, 55)
+paths_node = NodePath("../NPC1_Paths")
+speed = 0.5
+path_smoothing = 0.91
+
+[node name="lamp" parent="NPC" instance=ExtResource("8_4hc3x")]
+z_index = -1
+position = Vector2(17, -5)
+
+[node name="NPC1_Paths" type="Node2D" parent="."]
+
+[node name="Path1" type="Node2D" parent="NPC1_Paths"]
+position = Vector2(109, 55)
+
+[node name="Node2D" type="Node2D" parent="NPC1_Paths/Path1"]
+position = Vector2(27, -79)
+
+[node name="Node2D" type="Node2D" parent="NPC1_Paths/Path1/Node2D"]
+position = Vector2(-91, -92)
+
+[node name="Path2" type="Node2D" parent="NPC1_Paths"]
+position = Vector2(109, 55)
+
+[node name="Node2D" type="Node2D" parent="NPC1_Paths/Path2"]
+position = Vector2(46, -144)
+
+[node name="Node2D" type="Node2D" parent="NPC1_Paths/Path2/Node2D"]
+position = Vector2(-11, 139)
+
+[editable path="NPC"]
