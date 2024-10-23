@@ -14,6 +14,7 @@ script = ExtResource("1_r7xlq")
 rotation = 3.1442
 scale = Vector2(0.272652, 0.252901)
 shape = SubResource("CapsuleShape2D_7ynup")
+disabled = true
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 anchors_preset = 8
