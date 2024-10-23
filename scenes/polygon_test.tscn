@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://54ddxtl4mlk0"]
+
+[ext_resource type="PackedScene" uid="uid://xxeru74qvcwv" path="res://scenes/player_rat.tscn" id="1_t20ur"]
+[ext_resource type="Script" path="res://polygon_test.gd" id="2_3lv8u"]
+[ext_resource type="Script" path="res://scripts/smooth_camera.gd" id="3_11srm"]
+[ext_resource type="Shader" path="res://materials/shader/color_grade.gdshader" id="4_r77yv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7g5s3"]
+shader = ExtResource("4_r77yv")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="PlayerRat" parent="." instance=ExtResource("1_t20ur")]
+
+[node name="Node" type="Node2D" parent="." node_paths=PackedStringArray("rat")]
+script = ExtResource("2_3lv8u")
+rat = NodePath("../PlayerRat")
+
+[node name="Polygon2D" type="Polygon2D" parent="Node"]
+polygon = PackedVector2Array(33, -24, 58, -91, -27, -141, 161, -137, 130, 34, 110, -87)
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("character")]
+position = Vector2(-51, -17)
+script = ExtResource("3_11srm")
+character = NodePath("../PlayerRat")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="ColorGrading" type="ColorRect" parent="Camera2D/CanvasLayer"]
+material = SubResource("ShaderMaterial_7g5s3")
+offset_left = -1.0
+offset_top = -1.52588e-05
+offset_right = 39.0
+offset_bottom = 40.0
+scale = Vector2(12.6896, 7.46736)
