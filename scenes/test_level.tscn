@@ -389,8 +389,8 @@ texture = SubResource("CanvasTexture_byle4")
 [node name="NPC" parent="." node_paths=PackedStringArray("paths_node") instance=ExtResource("7_u4d5n")]
 z_index = 1
 position = Vector2(104, 55)
+collision_layer = 2
 paths_node = NodePath("../NPC1_Paths")
-speed = 0.5
 path_smoothing = 0.91
 
 [node name="lamp" parent="NPC" instance=ExtResource("8_4hc3x")]

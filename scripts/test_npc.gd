@@ -1,14 +1,12 @@
-extends Node2D
+extends CharacterBody2D
 
-@onready var body : CharacterBody2D = $CharacterBody2D
 @export var paths_node : Node2D
 @onready var paths = paths_node.get_children()
 
-@export_range(0.0, 1.0) var speed : float = 0.3
+@export_range(0.0, 100.0) var speed : float = 50
 @export_range(0.0, 1.0) var path_smoothing : float = 0.2
 var path_node_radius : float = 5
 
-var velocity : Vector2 = Vector2(0.0, 0.0)
 var current_path_index : int = 0
 @onready var current_path_node : Node2D = paths[current_path_index].get_child(0)
 
@@ -37,7 +35,7 @@ func _follow_path(delta):
 	var direction = (current_path_node.global_position - position).normalized() * speed
 	var sm = pow(path_smoothing, 0.25);
 	velocity = (sm) * velocity + (1.0 - sm) * direction
-	position += velocity
-	rotation_degrees = (velocity.angle() / PI) * 180
+	move_and_slide()
+	rotation_degrees = (velocity.angle() / PI) * 180;
 	
 	
