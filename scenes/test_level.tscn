@@ -411,6 +411,9 @@ shadow_item_cull_mask = 2
 
 [node name="PlayerRat" parent="." instance=ExtResource("2_knecj")]
 position = Vector2(106, 41)
+dash_boost = 100.0
+dash_duration = 0.3
+dash_recovery_duration = 0.7
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("character")]
 position = Vector2(-51, -17)
@@ -442,6 +445,7 @@ rat = NodePath("../PlayerRat")
 vision_area = NodePath("VisionArea")
 locations_node = NodePath("../NPC1_Locations")
 walking_speed = 36.246
+running_speed = 100.0
 path_smoothing = 0.658
 
 [node name="lamp" parent="NPC" instance=ExtResource("8_4hc3x")]

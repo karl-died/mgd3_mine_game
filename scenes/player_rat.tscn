@@ -1,8 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://xxeru74qvcwv"]
+[gd_scene load_steps=12 format=3 uid="uid://xxeru74qvcwv"]
 
 [ext_resource type="Script" path="res://scripts/player_rat.gd" id="1_8nqku"]
 [ext_resource type="Texture2D" uid="uid://dprs2w0a1dtu3" path="res://assets/rat_idle.png" id="1_y1x4p"]
 [ext_resource type="Texture2D" uid="uid://byagy1fjrqbpr" path="res://assets/rat_run.png" id="2_kgnjn"]
+[ext_resource type="Texture2D" uid="uid://dxsv6rmy3wh4o" path="res://assets/rat_dash.png" id="2_talr6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgca5"]
+atlas = ExtResource("2_talr6")
+region = Rect2(0, 0, 48, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ilupy"]
 atlas = ExtResource("1_y1x4p")
@@ -22,6 +27,14 @@ region = Rect2(48, 0, 48, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vp7sm"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgca5")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ilupy")
@@ -55,6 +68,7 @@ script = ExtResource("1_8nqku")
 texture_filter = 1
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_vp7sm")
+animation = &"dash"
 offset = Vector2(-10.4, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
