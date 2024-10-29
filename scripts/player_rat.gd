@@ -43,7 +43,7 @@ func _physics_process(delta):
 			dash_recovery_timer -= delta
 	
 	invincibility_timer -= delta
-		
+	
 	match state:
 		player_state.TRAPPED:
 			trap_timer -= delta
