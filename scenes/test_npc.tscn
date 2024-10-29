@@ -8,6 +8,8 @@ height = 126.532
 
 [node name="NPCCharacterBody2D" type="CharacterBody2D"]
 rotation = 1.5708
+collision_layer = 9
+collision_mask = 9
 script = ExtResource("1_r7xlq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

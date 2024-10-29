@@ -62,7 +62,6 @@ func _follow_path(delta):
 
 	
 	if Geometry2D.is_point_in_polygon(vision_area.global_transform.affine_inverse() * rat.global_position, vision_area.polygon):
-		print("chase!")
 		state = NPCState.Chasing
 	
 func _chase_rat(delta):
@@ -70,7 +69,6 @@ func _chase_rat(delta):
 		has_vision_of_rat = true
 		navigation_agent.target_position = rat.global_position
 	elif has_vision_of_rat == true:
-		print("lost vision")
 		has_vision_of_rat = false
 		chase_timer.one_shot = true
 		chase_timer.timeout.connect(_end_chase)
@@ -79,6 +77,5 @@ func _chase_rat(delta):
 	
 	
 func _end_chase():
-	print("chase ended")
 	navigation_agent.target_position = locations[current_location_index].global_position
 	state = NPCState.Walking

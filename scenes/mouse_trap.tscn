@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdaj8nk3swe0f"]
+
+[ext_resource type="Texture2D" uid="uid://cueglj5y3ukxd" path="res://assets/mouse_trap.png" id="1_mt6h8"]
+[ext_resource type="Script" path="res://scripts/mouse_trap.gd" id="1_ypbue"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_101gx"]
+radius = 1.0
+height = 9.99401
+
+[node name="MouseTrap" type="Node2D"]
+script = ExtResource("1_ypbue")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_mt6h8")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(1, 0)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = -1.60542
+shape = SubResource("CapsuleShape2D_101gx")
