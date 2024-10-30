@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bkcvjf6l4hkw6"]
+[gd_scene load_steps=34 format=3 uid="uid://bkcvjf6l4hkw6"]
 
 [ext_resource type="Texture2D" uid="uid://dsv07d2qx1uah" path="res://assets/mine_env.png" id="1_d4efn"]
 [ext_resource type="PackedScene" uid="uid://xxeru74qvcwv" path="res://scenes/player_rat.tscn" id="2_gnfgw"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bqs4hpkmk22cw" path="res://scenes/test_npc.tscn" id="7_g11tn"]
 [ext_resource type="PackedScene" uid="uid://dkxwkuhp7bqhp" path="res://scenes/lamp.tscn" id="8_s4b6r"]
 [ext_resource type="PackedScene" uid="uid://bdaj8nk3swe0f" path="res://scenes/mouse_trap.tscn" id="9_nbp2b"]
+[ext_resource type="PackedScene" uid="uid://bd67yq4fs6sym" path="res://scenes/key.tscn" id="10_up2cq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_dsvd6"]
 vertices = PackedVector2Array(-8, 7, -8, -8, 7, -8)
@@ -410,7 +411,7 @@ energy = 0.8
 blend_mode = 1
 shadow_item_cull_mask = 2
 
-[node name="PlayerRat" parent="." instance=ExtResource("2_gnfgw")]
+[node name="PlayerRat" parent="." groups=["Player"] instance=ExtResource("2_gnfgw")]
 z_index = 1
 position = Vector2(106, 41)
 dash_boost = 100.0
@@ -439,7 +440,7 @@ texture_filter = 1
 position = Vector2(-110, -45)
 texture = SubResource("CanvasTexture_byle4")
 
-[node name="NPC" parent="." node_paths=PackedStringArray("navigation_agent", "rat", "vision_area", "locations_node") instance=ExtResource("7_g11tn")]
+[node name="NPC" parent="." node_paths=PackedStringArray("navigation_agent", "rat", "vision_area", "locations_node") groups=["NPCs"] instance=ExtResource("7_g11tn")]
 z_index = 1
 position = Vector2(158, -100)
 collision_layer = 2
@@ -490,6 +491,11 @@ layer_0/tile_data = PackedInt32Array(-1, 0, 3, -65536, 65536, 2, -65535, 65536, 
 
 [node name="MouseTrap" parent="." instance=ExtResource("9_nbp2b")]
 position = Vector2(-123, -64)
+
+[node name="Key" parent="." node_paths=PackedStringArray("key_owner", "npc", "player") instance=ExtResource("10_up2cq")]
+key_owner = NodePath("../NPC")
+npc = NodePath("../NPC")
+player = NodePath("../PlayerRat")
 
 [connection signal="trap_entered" from="MouseTrap" to="PlayerRat" method="on_trap_entered"]
 

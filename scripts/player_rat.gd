@@ -23,6 +23,7 @@ var dash_timer = dash_duration
 var dash_recovery_timer = dash_recovery_duration
 var trap_timer = trap_duration
 var invincibility_timer = -0.1
+var has_key = false
 
 @onready var anim : AnimatedSprite2D = $AnimatedSprite2D
 
