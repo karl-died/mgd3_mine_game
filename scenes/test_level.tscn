@@ -74,6 +74,7 @@ polygon = PackedVector2Array(6.8125, -8, 4.9375, -4.75, 2.1875, -3.3125, -0.5, 1
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u635g"]
 texture = ExtResource("1_s027j")
+texture_region_size = Vector2i(1, 1)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
