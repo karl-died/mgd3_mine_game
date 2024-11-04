@@ -12,8 +12,8 @@ enum NPCState {
 @export var locations_node : Node2D
 @onready var locations = locations_node.get_children()
 
-@export_range(0.0, 100.0) var walking_speed : float = 60
-@export_range(0.0, 100.0) var running_speed : float = 95
+@export_range(0.0, 800.0) var walking_speed : float = 60
+@export_range(0.0, 800.0) var running_speed : float = 95
 @export_range(0.0, 1.0) var path_smoothing : float = 0.2
 var path_node_radius : float = 5
 @onready var current_speed = walking_speed
