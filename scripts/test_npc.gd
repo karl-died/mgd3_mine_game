@@ -23,6 +23,7 @@ var is_chasing: = false
 var state : NPCState = NPCState.Walking
 var chase_timer = Timer.new()
 var has_vision_of_rat = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_child(chase_timer)
@@ -53,7 +54,7 @@ func _process(delta):
 
 	move_and_slide()
 
-func _follow_path(delta):
+func _follow_path(_delta):
 	if locations == null:
 		return
 	
@@ -67,7 +68,7 @@ func _follow_path(delta):
 		state = NPCState.Chasing
 		is_chasing = true
 	
-func _chase_rat(delta):
+func _chase_rat(_delta):
 	if Geometry2D.is_point_in_polygon(vision_area.global_transform.affine_inverse() * rat.global_position, vision_area.polygon):
 		has_vision_of_rat = true
 		navigation_agent.target_position = rat.global_position
