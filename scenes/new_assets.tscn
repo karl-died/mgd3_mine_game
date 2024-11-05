@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://bkbbpaxrxf06b"]
+[gd_scene load_steps=65 format=3 uid="uid://bkbbpaxrxf06b"]
 
 [ext_resource type="Texture2D" uid="uid://bo4ntyqo65nl" path="res://assets/Wand_Tile_sheet_.png" id="1_7hslm"]
 [ext_resource type="Texture2D" uid="uid://ntipeg5vu17k" path="res://assets/Dirt/Dirt2_Color.png" id="1_uk3mn"]
@@ -9,6 +9,8 @@
 [ext_resource type="Shader" path="res://materials/shader/color_grade.gdshader" id="4_hbyow"]
 [ext_resource type="Shader" path="res://scripts/wall_color_correction.gdshader" id="4_s072m"]
 [ext_resource type="PackedScene" uid="uid://dokpkx8hr3rn3" path="res://scenes/player_rat_new_anim.tscn" id="5_0gsru"]
+[ext_resource type="AudioStream" uid="uid://b8fmjuck306ll" path="res://music/Hintergrund2.0.mp3" id="8_fjgy2"]
+[ext_resource type="AudioStream" uid="uid://d3mnnoxbglv0w" path="res://music/HardTechnoSpielEntdeckt.mp3" id="9_klcvo"]
 [ext_resource type="PackedScene" uid="uid://bqs4hpkmk22cw" path="res://scenes/test_npc.tscn" id="9_yf70i"]
 [ext_resource type="PackedScene" uid="uid://dkxwkuhp7bqhp" path="res://scenes/lamp.tscn" id="10_4yn4s"]
 
@@ -607,6 +609,15 @@ offset_right = 39.0
 offset_bottom = 40.0
 scale = Vector2(12.6896, 7.46736)
 
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="Camera2D"]
+stream = ExtResource("8_fjgy2")
+autoplay = true
+panning_strength = 0.0
+
+[node name="ActionMusic" type="AudioStreamPlayer2D" parent="Camera2D"]
+stream = ExtResource("9_klcvo")
+panning_strength = 0.0
+
 [node name="PlayerRat" parent="." instance=ExtResource("5_0gsru")]
 modulate = Color(0.625597, 0.625597, 0.625597, 1)
 position = Vector2(1568, 440)
@@ -663,5 +674,12 @@ position = Vector2(-2356, 1730)
 
 [node name="Location3" type="Node2D" parent="NPC1_Locations"]
 position = Vector2(-420, 1071)
+
+[connection signal="chase_ended" from="NPC" to="Camera2D/BackgroundMusic" method="play"]
+[connection signal="chase_ended" from="NPC" to="Camera2D/ActionMusic" method="stop"]
+[connection signal="player_caught" from="NPC" to="Camera2D/BackgroundMusic" method="play"]
+[connection signal="player_caught" from="NPC" to="Camera2D/ActionMusic" method="stop"]
+[connection signal="player_spotted" from="NPC" to="Camera2D/BackgroundMusic" method="stop"]
+[connection signal="player_spotted" from="NPC" to="Camera2D/ActionMusic" method="play"]
 
 [editable path="NPC"]

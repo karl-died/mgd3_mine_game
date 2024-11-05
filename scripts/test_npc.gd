@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+signal player_spotted
+signal player_caught
+signal chase_ended
+
 enum NPCState {
 	Walking,
 	Chasing
@@ -63,6 +67,7 @@ func _follow_path(delta):
 	
 	if Geometry2D.is_point_in_polygon(vision_area.global_transform.affine_inverse() * rat.global_position, vision_area.polygon):
 		state = NPCState.Chasing
+		player_spotted.emit()
 	
 func _chase_rat(delta):
 	if Geometry2D.is_point_in_polygon(vision_area.global_transform.affine_inverse() * rat.global_position, vision_area.polygon):
@@ -74,8 +79,11 @@ func _chase_rat(delta):
 		chase_timer.timeout.connect(_end_chase)
 		chase_timer.start(3)
 		
+	if navigation_agent.is_target_reached():
+		_end_chase()
 	
 	
 func _end_chase():
 	navigation_agent.target_position = locations[current_location_index].global_position
 	state = NPCState.Walking
+	chase_ended.emit()
