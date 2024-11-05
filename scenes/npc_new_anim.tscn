@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3iu005avvl5q"]
+
+[ext_resource type="Script" path="res://scripts/test_npc.gd" id="1_35tpo"]
+[ext_resource type="Texture2D" uid="uid://dc8ei1t3art5j" path="res://assets/spritesheet_minerwalk.png" id="2_c741v"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ynup"]
+radius = 671.327
+height = 2664.9
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvdex"]
+atlas = ExtResource("2_c741v")
+region = Rect2(0, 0, 1333, 1778)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ulsn"]
+atlas = ExtResource("2_c741v")
+region = Rect2(2666, 0, 1333, 1778)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y25l8"]
+atlas = ExtResource("2_c741v")
+region = Rect2(1333, 0, 1333, 1778)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oi25v"]
+atlas = ExtResource("2_c741v")
+region = Rect2(3999, 0, 1333, 1778)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kd7v6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvdex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ulsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y25l8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oi25v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="NPCCharacterBody2D" type="CharacterBody2D"]
+rotation = 1.5708
+collision_layer = 9
+collision_mask = 9
+script = ExtResource("1_35tpo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 3.1442
+scale = Vector2(0.272652, 0.252901)
+shape = SubResource("CapsuleShape2D_7ynup")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_kd7v6")
+frame_progress = 0.832397
+
+[connection signal="ready" from="." to="AnimatedSprite2D" method="play" binds= ["default"]]
