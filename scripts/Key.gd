@@ -39,8 +39,7 @@ func _on_body_entered(body):
 		player_in_range = true
 
 func _on_area_entered(area):
-	
-	if (key_owner.is_in_group("Player") && area.get_parent().is_in_group("NPCs")):
+	if (key_owner.is_in_group("Player") && area.name == "KeyCollider"):
 			key_owner = area.get_parent()
 			follow_distance = 400
 			ready_to_steal = false

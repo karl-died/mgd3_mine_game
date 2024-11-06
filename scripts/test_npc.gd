@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 # signals
 signal player_spotted
-signal player_caught
+#signal player_caught
 signal chase_ended
 
 # avoid navigating tree in code
@@ -17,7 +17,7 @@ signal chase_ended
 
 # stats
 var walking_speed : float = 350
-var running_speed : float = 700
+var running_speed : float = 1000
 @onready var current_speed = walking_speed
 
 # walking
@@ -49,10 +49,10 @@ func _physics_process(_delta):
 	else:
 		rotation=lerp_angle(rotation, atan2(direction.y, direction.x), .1)
 
-
 	# movement
 	nav_agent.target_position = target.global_position
 	velocity = global_position.direction_to(nav_agent.get_next_path_position()) * current_speed
+	anim.speed_scale = 0.5 + 0.001 * velocity.length()
 	move_and_slide()
 
 func _on_navigation_agent_2d_target_reached():

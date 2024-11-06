@@ -7,6 +7,6 @@ var smoothing = 0.85;
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _physics_process(_delta):
 	position += (1 - smoothing) * (character.position - position)
 	pass
