@@ -11,7 +11,7 @@ void fragment() {
 	col.r = pow(col.r, 1.3);
 	col.g = pow(col.g, 1.7);
 	col.b = pow(col.b, 1.5);
-	
+
 	col.r *= 1.3;
 	col.r -= 0.04;
 	col.g *= 1.5;

@@ -1,10 +1,54 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqs4hpkmk22cw"]
+[gd_scene load_steps=11 format=3 uid="uid://bqs4hpkmk22cw"]
 
 [ext_resource type="Script" path="res://scripts/test_npc.gd" id="1_r7xlq"]
+[ext_resource type="Texture2D" uid="uid://byei5hame5x1c" path="res://assets/spritesheet_minerwalk.png" id="2_qpysu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ynup"]
 radius = 20.0
 height = 126.532
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qccrx"]
+atlas = ExtResource("2_qpysu")
+region = Rect2(0, 0, 1333, 1778)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yfjy"]
+atlas = ExtResource("2_qpysu")
+region = Rect2(2666, 0, 1333, 1778)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pejd"]
+atlas = ExtResource("2_qpysu")
+region = Rect2(1333, 0, 1333, 1778)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6terc"]
+atlas = ExtResource("2_qpysu")
+region = Rect2(3999, 0, 1333, 1778)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bg3db"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qccrx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yfjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pejd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6terc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tvnml"]
+radius = 332.0
+height = 994.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wl4hh"]
+radius = 4677.72
 
 [node name="NPCCharacterBody2D" type="CharacterBody2D"]
 rotation = 1.5708
@@ -19,6 +63,7 @@ shape = SubResource("CapsuleShape2D_7ynup")
 disabled = true
 
 [node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -34,6 +79,7 @@ scale = Vector2(0.286141, 0.291672)
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -48,3 +94,28 @@ grow_vertical = 2
 rotation = 1.5708
 scale = Vector2(0.839903, 0.290238)
 metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_bg3db")
+
+[node name="KeyCollider" type="Area2D" parent="."]
+collision_layer = 513
+collision_mask = 513
+
+[node name="KeyHitbox" type="CollisionShape2D" parent="KeyCollider"]
+position = Vector2(-138, -62.9995)
+shape = SubResource("CapsuleShape2D_tvnml")
+
+[node name="visioncone" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="visioncone"]
+polygon = PackedVector2Array(230, -23.0008, 2063, 1024.99, 2063, -1073.01)
+
+[node name="chaserange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chaserange"]
+shape = SubResource("CircleShape2D_wl4hh")
+
+[connection signal="body_entered" from="visioncone" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="chaserange" to="." method="_on_chaserange_body_exited"]

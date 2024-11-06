@@ -23,6 +23,7 @@ var dash_timer = dash_duration
 var dash_recovery_timer = dash_recovery_duration
 var trap_timer = trap_duration
 var invincibility_timer = -0.1
+var has_key = false
 
 @onready var anim : AnimatedSprite2D = $AnimatedSprite2D
 
@@ -56,10 +57,11 @@ func _physics_process(delta):
 				state = player_state.IDLE
 				
 		player_state.IDLE, player_state.RUNNING:
-			move_direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
-			move_direction.y = Input.get_action_strength("down") - Input.get_action_strength("up")
-			
-			move_direction = move_direction.normalized()
+			#move_direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
+			#move_direction.y = Input.get_action_strength("down") - Input.get_action_strength("up")
+			#move_direction = move_direction.normalized()
+			move_direction = Input.get_vector("left", "right", "up", "down")
+			anim.speed_scale = 0.5 + 0.5 * move_direction.length()
 			
 			if move_direction.length() > 0.1:
 				look_direction = move_direction

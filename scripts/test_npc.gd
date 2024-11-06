@@ -1,81 +1,73 @@
 extends CharacterBody2D
 
-enum NPCState {
-	Walking,
-	Chasing
-}
+# signals
+signal player_spotted
+signal player_caught
+signal chase_ended
 
+# avoid navigating tree in code
 @export var navigation_agent : NavigationAgent2D
 @export var rat : CharacterBody2D
 @export var vision_area : Polygon2D
-
 @export var locations_node : Node2D
 @onready var locations = locations_node.get_children()
+@export var target: Node2D = null
+@onready var anim = $AnimatedSprite2D
+@onready var nav_agent = $NavigationAgent2D
 
-@export_range(0.0, 800.0) var walking_speed : float = 60
-@export_range(0.0, 800.0) var running_speed : float = 95
-@export_range(0.0, 1.0) var path_smoothing : float = 0.2
-var path_node_radius : float = 5
+# stats
+var walking_speed : float = 500
+var running_speed : float = 700
 @onready var current_speed = walking_speed
+
+# walking
 var current_location_index : int = 0
+var path_smoothing : float = 0.6
+var path_node_radius : float = 5
+var target_position: Vector2
 
-var state : NPCState = NPCState.Walking
-var chase_timer = Timer.new()
+# chasing
+var chase = false
 var has_vision_of_rat = false
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	add_child(chase_timer)
-	navigation_agent.target_position = locations[current_location_index].global_position
-	
-func _process(delta):
-	match state:
-		NPCState.Walking:
-			_follow_path(delta)
-			current_speed = walking_speed
-		NPCState.Chasing:
-			_chase_rat(delta)
-			current_speed = running_speed
-			
-	
-	var next_position = navigation_agent.get_next_path_position()
-	var direction = (next_position - position).normalized() * current_speed
-	if not navigation_agent.is_target_reachable():
-		direction = Vector2(0.0, 0.0)
-	var sm = pow(path_smoothing, 0.25);
-	
-	if not navigation_agent.is_target_reached():
-		velocity = (sm) * velocity + (1.0 - sm) * direction
-		rotation_degrees = (velocity.angle() / PI) * 180
-	else:
-		velocity = Vector2(0.0, 0.0)
+var chase_timer = Timer.new()
 
+
+
+func _ready():
+	anim.play("default")
+	add_child(chase_timer)
+	target = locations[current_location_index]
+
+func _physics_process(_delta):
+	
+	# fix jitter on reaching player by smoothly adjusting speed
+	var direction = (target.position - position).normalized()
+	if (position.distance_to(target.position) < 100 && target == rat):
+		current_speed = lerp(current_speed, 0.0, .1)
+	else:
+		rotation=lerp_angle(rotation, atan2(direction.y, direction.x), .1)
+		current_speed = lerp(current_speed, running_speed, .1)
+
+	# movement
+	nav_agent.target_position = target.global_position
+	velocity = global_position.direction_to(nav_agent.get_next_path_position()) * current_speed
 	move_and_slide()
 
-func _follow_path(delta):
-	if locations == null:
-		return
-	
-	if navigation_agent.is_target_reached():
+func _on_navigation_agent_2d_target_reached():
+	if (!chase):
 		current_location_index += 1
 		current_location_index %= len(locations)
-		navigation_agent.target_position = locations[current_location_index].global_position
+		target = locations[current_location_index]
 
-	
-	if Geometry2D.is_point_in_polygon(vision_area.global_transform.affine_inverse() * rat.global_position, vision_area.polygon):
-		state = NPCState.Chasing
-	
-func _chase_rat(delta):
-	if Geometry2D.is_point_in_polygon(vision_area.global_transform.affine_inverse() * rat.global_position, vision_area.polygon):
-		has_vision_of_rat = true
-		navigation_agent.target_position = rat.global_position
-	elif has_vision_of_rat == true:
-		has_vision_of_rat = false
-		chase_timer.one_shot = true
-		chase_timer.timeout.connect(_end_chase)
-		chase_timer.start(3)
-		
-	
-	
-func _end_chase():
-	navigation_agent.target_position = locations[current_location_index].global_position
-	state = NPCState.Walking
+func _on_area_2d_body_entered(body):
+	if (body == rat && !chase):
+		chase = true
+		target = rat
+		current_speed = running_speed
+		player_spotted.emit()
+
+func _on_chaserange_body_exited(body):
+	if (body == rat):
+		chase_ended.emit()
+		chase = false
+		target = locations[current_location_index]
