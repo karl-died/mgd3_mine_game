@@ -16,7 +16,7 @@ signal chase_ended
 @onready var nav_agent = $NavigationAgent2D
 
 # stats
-var walking_speed : float = 500
+var walking_speed : float = 350
 var running_speed : float = 700
 @onready var current_speed = walking_speed
 
@@ -39,14 +39,16 @@ func _ready():
 	target = locations[current_location_index]
 
 func _physics_process(_delta):
-	
 	# fix jitter on reaching player by smoothly adjusting speed
 	var direction = (target.position - position).normalized()
 	if (position.distance_to(target.position) < 100 && target == rat):
 		current_speed = lerp(current_speed, 0.0, .1)
+	elif (target == rat):
+		current_speed = lerp(current_speed, running_speed, .1)
+		rotation=lerp_angle(rotation, atan2(direction.y, direction.x), .1)
 	else:
 		rotation=lerp_angle(rotation, atan2(direction.y, direction.x), .1)
-		current_speed = lerp(current_speed, running_speed, .1)
+
 
 	# movement
 	nav_agent.target_position = target.global_position
@@ -67,7 +69,8 @@ func _on_area_2d_body_entered(body):
 		player_spotted.emit()
 
 func _on_chaserange_body_exited(body):
-	if (body == rat):
+	if (body == rat && chase):
 		chase_ended.emit()
+		current_speed = walking_speed
 		chase = false
 		target = locations[current_location_index]

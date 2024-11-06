@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dndaw0nqyakur"]
+
+[ext_resource type="Texture2D" uid="uid://h21dmuo33ru5" path="res://assets/trapdoor.png" id="1_jifib"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pvt45"]
+size = Vector2(249, 251)
+
+[node name="Trapdoor" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5.5, -7.5)
+shape = SubResource("RectangleShape2D_pvt45")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jifib")

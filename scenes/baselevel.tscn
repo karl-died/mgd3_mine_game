@@ -1,33 +1,19 @@
-[gd_scene load_steps=58 format=3 uid="uid://bkbbpaxrxf06b"]
+[gd_scene load_steps=54 format=3 uid="uid://bkbbpaxrxf06b"]
 
-[ext_resource type="Shader" path="res://materials/shader/ground_noise.gdshader" id="1_4idt7"]
-[ext_resource type="Texture2D" uid="uid://ntipeg5vu17k" path="res://assets/Dirt/Dirt2_Color.png" id="2_rql52"]
+[ext_resource type="PackedScene" uid="uid://dy2uvm07v2ygx" path="res://scenes/floor.tscn" id="1_qjsaq"]
 [ext_resource type="Texture2D" uid="uid://bo4ntyqo65nl" path="res://assets/Wand_Tile_sheet_.png" id="3_d0lc7"]
 [ext_resource type="Texture2D" uid="uid://55cnhohnqvjk" path="res://assets/Rails_Tile_Sheet.png" id="4_1ir0w"]
 [ext_resource type="Texture2D" uid="uid://bkd1opqruntkn" path="res://materials/light_shape_1.tres" id="5_n3lkj"]
 [ext_resource type="Script" path="res://scripts/smooth_camera.gd" id="6_iolh4"]
 [ext_resource type="Shader" path="res://materials/shader/color_grade.gdshader" id="7_a43pt"]
+[ext_resource type="AudioStream" uid="uid://ciel3sqip2ksi" path="res://music/hintergrund2.5.mp3" id="7_m70hl"]
+[ext_resource type="AudioStream" uid="uid://coje2xp1sbl7n" path="res://music/HardTechnoSpiel1.2.mp3" id="8_6r1uc"]
 [ext_resource type="PackedScene" uid="uid://dokpkx8hr3rn3" path="res://scenes/player_rat_new_anim.tscn" id="8_7m3yw"]
-[ext_resource type="AudioStream" uid="uid://b8fmjuck306ll" path="res://music/Hintergrund2.0.mp3" id="8_afuer"]
 [ext_resource type="Shader" path="res://scripts/wall_color_correction.gdshader" id="9_71uwl"]
-[ext_resource type="AudioStream" uid="uid://d3mnnoxbglv0w" path="res://music/HardTechnoSpielEntdeckt.mp3" id="9_x6gl2"]
 [ext_resource type="PackedScene" uid="uid://bqs4hpkmk22cw" path="res://scenes/test_npc.tscn" id="10_6exhl"]
 [ext_resource type="PackedScene" uid="uid://dkxwkuhp7bqhp" path="res://scenes/lamp.tscn" id="11_xqvr0"]
 [ext_resource type="PackedScene" uid="uid://c7eivytv6g8pj" path="res://scenes/key.tscn" id="12_kr0yd"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_8yg7o"]
-frequency = 0.0458
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2j2hd"]
-noise = SubResource("FastNoiseLite_8yg7o")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hjgp7"]
-shader = ExtResource("1_4idt7")
-shader_parameter/noise_amount = 0.5
-shader_parameter/noise = SubResource("NoiseTexture2D_2j2hd")
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_asa1v"]
-diffuse_texture = ExtResource("2_rql52")
+[ext_resource type="PackedScene" uid="uid://dndaw0nqyakur" path="res://trapdoor.tscn" id="14_r07g1"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_a54i1"]
 
@@ -286,17 +272,7 @@ shader = ExtResource("9_71uwl")
 
 [node name="Node2D" type="Node2D"]
 
-[node name="TextureRect" type="TextureRect" parent="."]
-z_index = -1
-material = SubResource("ShaderMaterial_hjgp7")
-offset_left = -6325.0
-offset_top = -2317.0
-offset_right = 34362.0
-offset_bottom = 18396.0
-scale = Vector2(0.382264, 0.382264)
-texture = SubResource("CanvasTexture_asa1v")
-expand_mode = 1
-stretch_mode = 1
+[node name="TextureRect" parent="." instance=ExtResource("1_qjsaq")]
 
 [node name="TileMap2" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_omnwf")
@@ -329,6 +305,31 @@ shadow_filter = 2
 texture = ExtResource("5_n3lkj")
 texture_scale = 32.0
 
+[node name="PointLight2D3" type="PointLight2D" parent="Lighting/PointLight2D3"]
+position = Vector2(2756, 853)
+color = Color(0.878431, 0.815686, 0.501961, 1)
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("5_n3lkj")
+texture_scale = 32.0
+
+[node name="PointLight2D3" type="PointLight2D" parent="Lighting/PointLight2D3/PointLight2D3"]
+position = Vector2(1481, 445)
+color = Color(0.878431, 0.815686, 0.501961, 1)
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("5_n3lkj")
+texture_scale = 32.0
+
+[node name="PointLight2D4" type="PointLight2D" parent="Lighting"]
+position = Vector2(-3116, 1656)
+scale = Vector2(1.84, 0.76)
+color = Color(0.878431, 0.815686, 0.501961, 1)
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("5_n3lkj")
+texture_scale = 32.0
+
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Lighting"]
 color = Color(1, 0.87451, 0.854902, 1)
 energy = 0.6
@@ -351,11 +352,11 @@ offset_bottom = 40.0
 scale = Vector2(12.6896, 7.46736)
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="Camera2D"]
-stream = ExtResource("8_afuer")
+stream = ExtResource("7_m70hl")
 autoplay = true
 
 [node name="ActionMusic" type="AudioStreamPlayer2D" parent="Camera2D"]
-stream = ExtResource("9_x6gl2")
+stream = ExtResource("8_6r1uc")
 
 [node name="PlayerRat" parent="." groups=["Player"] instance=ExtResource("8_7m3yw")]
 modulate = Color(0.625597, 0.625597, 0.625597, 1)
@@ -402,7 +403,6 @@ target_desired_distance = 5.0
 path_max_distance = 200.0
 avoidance_enabled = true
 radius = 13.04
-debug_enabled = true
 
 [node name="VisionArea" type="Polygon2D" parent="NPC"]
 visible = false
@@ -428,10 +428,14 @@ key_owner = NodePath("../NPC")
 npc = NodePath("../NPC")
 player = NodePath("../PlayerRat")
 
+[node name="Trapdoor" parent="." instance=ExtResource("14_r07g1")]
+position = Vector2(5791, 539)
+
 [connection signal="chase_ended" from="NPC" to="Camera2D/BackgroundMusic" method="play"]
 [connection signal="chase_ended" from="NPC" to="Camera2D/ActionMusic" method="stop"]
 [connection signal="player_spotted" from="NPC" to="Camera2D/BackgroundMusic" method="stop"]
 [connection signal="player_spotted" from="NPC" to="Camera2D/ActionMusic" method="play"]
 [connection signal="target_reached" from="NPC/NavigationAgent2D" to="NPC" method="_on_navigation_agent_2d_target_reached"]
+[connection signal="body_entered" from="Trapdoor" to="PlayerRat" method="_on_trapdoor_body_entered"]
 
 [editable path="NPC"]

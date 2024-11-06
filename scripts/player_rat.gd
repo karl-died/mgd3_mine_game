@@ -29,7 +29,6 @@ var has_key = false
 
 
 func _physics_process(delta):
-	
 	if not (state == player_state.TRAPPED):
 		if Input.is_action_just_pressed("jump") && dash_recovery_timer < 0:
 			state = player_state.DASHING
@@ -86,3 +85,8 @@ func on_trap_entered():
 		state = player_state.TRAPPED
 		trap_timer = trap_duration
 	
+
+
+func _on_trapdoor_body_entered(body):
+	if (body == self && has_key):
+		print("success!")

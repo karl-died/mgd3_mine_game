@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="top_down_mine_test"
-run/main_scene="res://scenes/test_level.tscn"
+config/name="The Gospel of Saint Ratthew"
+run/main_scene="res://scenes/baselevel.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
