@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlxdbak0t5c56"]
-
-[ext_resource type="TileSet" uid="uid://detpakbo154x2" path="res://scenes/mine.tres" id="1_7lt56"]
-
-[node name="Testlevel" type="Node2D"]
-
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource("1_7lt56")
-format = 2

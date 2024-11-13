@@ -1,3 +1,0 @@
-extends NavigationRegion2D
-
-

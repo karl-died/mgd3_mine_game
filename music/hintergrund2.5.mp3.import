@@ -2,13 +2,13 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://ciel3sqip2ksi"
-path="res://.godot/imported/hintergrund2.5.mp3-9e89b6ca030a8dcda6ffba3ba26d7d89.mp3str"
+uid="uid://d3j4vi8188k8k"
+path="res://.godot/imported/hintergrund2.5.mp3-01e01864746161dc1eebe7b533c97775.mp3str"
 
 [deps]
 
-source_file="res://music/hintergrund2.5.mp3"
-dest_files=["res://.godot/imported/hintergrund2.5.mp3-9e89b6ca030a8dcda6ffba3ba26d7d89.mp3str"]
+source_file="res://scenes/hintergrund2.5.mp3"
+dest_files=["res://.godot/imported/hintergrund2.5.mp3-01e01864746161dc1eebe7b533c97775.mp3str"]
 
 [params]
 

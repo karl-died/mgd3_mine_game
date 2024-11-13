@@ -2,13 +2,13 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://coje2xp1sbl7n"
-path="res://.godot/imported/HardTechnoSpiel1.2.mp3-ff63bf4d303f1c5191b874fceef2129f.mp3str"
+uid="uid://x0me6iw8537u"
+path="res://.godot/imported/HardTechnoSpiel1.2.mp3-ac40299512bcd145b7f69a3e63e8f52f.mp3str"
 
 [deps]
 
-source_file="res://music/HardTechnoSpiel1.2.mp3"
-dest_files=["res://.godot/imported/HardTechnoSpiel1.2.mp3-ff63bf4d303f1c5191b874fceef2129f.mp3str"]
+source_file="res://scenes/HardTechnoSpiel1.2.mp3"
+dest_files=["res://.godot/imported/HardTechnoSpiel1.2.mp3-ac40299512bcd145b7f69a3e63e8f52f.mp3str"]
 
 [params]
 
