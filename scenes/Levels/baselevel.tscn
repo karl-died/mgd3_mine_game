@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bkd1opqruntkn" path="res://materials/light_shape_1.tres" id="5_c1q4k"]
 [ext_resource type="Script" path="res://scripts/smooth_camera.gd" id="6_paqki"]
 [ext_resource type="Shader" path="res://materials/shader/color_grade.gdshader" id="7_om33w"]
-[ext_resource type="AudioStream" uid="uid://ciel3sqip2ksi" path="res://music/hintergrund2.5.mp3" id="8_f63gb"]
-[ext_resource type="AudioStream" uid="uid://coje2xp1sbl7n" path="res://music/HardTechnoSpiel1.2.mp3" id="9_p3v33"]
+[ext_resource type="AudioStream" uid="uid://d3j4vi8188k8k" path="res://music/hintergrund2.5.mp3" id="8_f63gb"]
+[ext_resource type="AudioStream" uid="uid://x0me6iw8537u" path="res://music/HardTechnoSpiel1.2.mp3" id="9_p3v33"]
 [ext_resource type="PackedScene" uid="uid://dokpkx8hr3rn3" path="res://scenes/Player and Enemy/player_rat_new_anim.tscn" id="10_cjyxn"]
 [ext_resource type="Shader" path="res://scripts/wall_color_correction.gdshader" id="11_d3cqt"]
 [ext_resource type="PackedScene" uid="uid://bqs4hpkmk22cw" path="res://scenes/Levels/test_npc.tscn" id="12_byape"]
@@ -330,6 +330,7 @@ texture = ExtResource("5_c1q4k")
 texture_scale = 32.0
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Lighting"]
+visible = false
 color = Color(1, 0.87451, 0.854902, 1)
 energy = 0.6
 blend_mode = 1
