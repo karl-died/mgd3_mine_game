@@ -313,8 +313,7 @@ shader = ExtResource("11_vl8k2")
 [node name="Node2D" type="Node2D"]
 
 [node name="Trapdoor" parent="." instance=ExtResource("1_1adv3")]
-visible = false
-position = Vector2(5791, 539)
+position = Vector2(8157, 283)
 
 [node name="TextureRect" parent="." instance=ExtResource("2_8yd0h")]
 offset_left = -14830.0
@@ -323,67 +322,217 @@ offset_right = 60591.0
 offset_bottom = 30412.0
 
 [node name="TileMap2" type="TileMap" parent="."]
+z_index = -1
 tile_set = SubResource("TileSet_omnwf")
 format = 2
 layer_0/tile_data = PackedInt32Array(-327727, 327681, 0, -327726, 327681, 0, -327725, 327681, 0, -327724, 327681, 0, -327723, 327681, 0, -327722, 327681, 0, -327721, 327681, 0, -327720, 327681, 0, -327719, 327681, 0, -327718, 327681, 0, -327717, 327681, 0, -327716, 327681, 0, -327715, 327681, 0, -327714, 327681, 0, -327713, 327681, 0, -327712, 327681, 0, -327711, 327681, 0, -327710, 327681, 0, -327709, 327681, 0, -327708, 327681, 0, -327707, 327681, 0, -327706, 327681, 0, -327705, 327681, 0, -327704, 327681, 0, -327703, 327681, 0, -327702, 327681, 0, -196655, 327681, 0, -196654, 327681, 0, -196653, 327681, 0, -196652, 327681, 0, -196651, 327681, 0, -196650, 327681, 0, -196649, 327681, 0, -196648, 327681, 0, -196647, 327681, 0, -196646, 327681, 0, -196645, 327681, 0, -196644, 327681, 0, -196643, 327681, 0, -196642, 327681, 0, -196641, 327681, 0, -196640, 327681, 0, -196639, 327681, 0, -196638, 327681, 0, -196637, 327681, 0, -196636, 327681, 0, -196635, 327681, 0, -196634, 327681, 0, -196633, 327681, 0, -196632, 327681, 0, -196631, 327681, 0, -196630, 327681, 0, -196629, 327681, 0, -196628, 393217, 0, -131091, 393217, 2, -65554, 393217, 2, -17, 393217, 2, 65520, 393217, 2, 131057, 262145, 4, 131058, 327681, 4, 131059, 327681, 4, 131060, 327681, 4, 131061, 327681, 4, 131062, 327681, 4, 131063, 327681, 4, 131064, 327681, 4, 131065, 327681, 4, 131066, 327681, 4, 131067, 327681, 4, 131068, 327681, 4, 131069, 327681, 4, 131070, 327681, 4, 131071, 327681, 4, 65536, 327681, 4, 65537, 327681, 4, 65538, 327681, 4, 65539, 327681, 4, 65540, 327681, 4, 65541, 393217, 0, 131078, 262145, 4, 131079, 327681, 4, 131080, 327681, 4, 131081, 327681, 4, 131082, 327681, 4, 131083, 327681, 4, 131084, 327681, 4, 131085, 327681, 4, 131086, 327681, 4, 131087, 327681, 4, 131088, 327681, 4, 131089, 327681, 4, 131090, 327681, 4, 131091, 327681, 4, 131092, 327681, 4, 131093, 327681, 4, 131094, 327681, 4, 131095, 327681, 4, 131096, 327681, 4, 131097, 327681, 4, 131098, 327681, 4, 131099, 327681, 4, 131100, 327681, 4, 131101, 327681, 4, 131102, 327681, 4, 131103, 327681, 4, 131104, 327681, 4, 131105, 327681, 4, 131106, 327681, 4, 131107, 327681, 4, 131108, 327681, 4, 131109, 327681, 4, 131110, 327681, 4, 131111, 327681, 4, -65497, 327681, 4, -65498, 327681, 4, -65499, 327681, 4, -65500, 327681, 4, -65501, 327681, 4, -65502, 327681, 4, -65503, 327681, 4, -65504, 327681, 4, -65505, 327681, 4, -65506, 327681, 4, -65507, 327681, 4, -65508, 327681, 4, -65509, 327681, 4, -65510, 327681, 4, -65511, 327681, 4, -65512, 327681, 4, -65513, 327681, 4, -65514, 327681, 4, -65515, 327681, 4, -65516, 327681, 4, -65517, 327681, 4, -65518, 327681, 4, -65519, 327681, 4, -65520, 327681, 4, -65521, 327681, 4, -65526, 327681, 4, -65525, 327681, 4, -65524, 327681, 4, -65523, 327681, 4, -65522, 327681, 4, -131083, 327681, 4, -131082, 327681, 4, -131081, 327681, 4, -131080, 327681, 4, -131079, 327681, 4, -131078, 327681, 4, -131077, 327681, 4, -131076, 327681, 4, -131075, 327681, 4, -131074, 327681, 4, -131073, 327681, 4, -196608, 327681, 4, -196607, 327681, 4, -196606, 327681, 4, -196605, 327681, 4, -196604, 327681, 4, -196603, 327681, 4, -196602, 327681, 4, -196601, 393217, 0, -65527, 262145, 4, -131064, 393217, 2, -131084, 262145, 4, -196621, 393217, 2, -262158, 393217, 2, -327695, 393217, 0, -327701, 327681, 0, -327700, 327681, 0, -327699, 327681, 0, -327698, 327681, 0, -327697, 327681, 0, -327696, 327681, 0, -196627, 458753, 0, -131090, 458753, 0, -65553, 458753, 0, -16, 458753, 0, 65521, 458753, 0, 131056, 393217, 1, 65519, 393217, 1, -18, 393217, 1, -65555, 393217, 1, -131092, 393217, 1, -262159, 393217, 1, -196622, 393217, 1, -131085, 393217, 1, -196620, 458753, 0, -262157, 458753, 0, -327694, 458753, 0, -196600, 458753, 0, -131063, 458753, 0, 65542, 458753, 0, -65528, 393217, 1, -131065, 393217, 1, 131077, 393217, 1)
 
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(1, 0.87451, 0.854902, 1)
+energy = 0.6
+blend_mode = 1
+
 [node name="Lighting" type="Node2D" parent="."]
-visible = false
 
 [node name="PointLight2D" type="PointLight2D" parent="Lighting"]
-position = Vector2(1922, 599)
+position = Vector2(739, 1232)
 color = Color(0.878431, 0.815686, 0.501961, 1)
+energy = 1.43
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("5_m38ri")
+texture_scale = 32.0
+
+[node name="PointLight2D20" type="PointLight2D" parent="Lighting"]
+position = Vector2(1276, 2705)
+color = Color(0.878431, 0.815686, 0.501961, 1)
+energy = 1.43
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("5_m38ri")
+texture_scale = 32.0
+
+[node name="PointLight2D21" type="PointLight2D" parent="Lighting"]
+position = Vector2(-1006, 3196)
+color = Color(0.878431, 0.815686, 0.501961, 1)
+energy = 1.43
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("5_m38ri")
+texture_scale = 32.0
+
+[node name="PointLight2D22" type="PointLight2D" parent="Lighting"]
+position = Vector2(-2541, 3259)
+color = Color(0.878431, 0.815686, 0.501961, 1)
+energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
 texture_scale = 32.0
 
 [node name="PointLight2D2" type="PointLight2D" parent="Lighting"]
-position = Vector2(1881, 330)
+position = Vector2(199, -1226)
 color = Color(0.878431, 0.815686, 0.501961, 1)
+energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
 texture_scale = 32.0
 
 [node name="PointLight2D3" type="PointLight2D" parent="Lighting"]
-position = Vector2(1113, -336)
+position = Vector2(2967, -969)
 color = Color(0.878431, 0.815686, 0.501961, 1)
+energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
 texture_scale = 32.0
 
-[node name="PointLight2D3" type="PointLight2D" parent="Lighting/PointLight2D3"]
-position = Vector2(2756, 853)
+[node name="PointLight2D13" type="PointLight2D" parent="Lighting"]
+position = Vector2(1713, -2236)
 color = Color(0.878431, 0.815686, 0.501961, 1)
+energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
 texture_scale = 32.0
 
-[node name="PointLight2D3" type="PointLight2D" parent="Lighting/PointLight2D3/PointLight2D3"]
-position = Vector2(1481, 445)
+[node name="PointLight2D14" type="PointLight2D" parent="Lighting"]
+position = Vector2(-653, -2689)
 color = Color(0.878431, 0.815686, 0.501961, 1)
+energy = 1.43
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("5_m38ri")
+texture_scale = 32.0
+
+[node name="PointLight2D15" type="PointLight2D" parent="Lighting"]
+position = Vector2(-2843, -2433)
+color = Color(0.878431, 0.815686, 0.501961, 1)
+energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
 texture_scale = 32.0
 
 [node name="PointLight2D4" type="PointLight2D" parent="Lighting"]
-position = Vector2(-3116, 1656)
-scale = Vector2(1.84, 0.76)
+position = Vector2(-3770, 1082)
+scale = Vector2(1.26348, 1.11907)
 color = Color(0.878431, 0.815686, 0.501961, 1)
+energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
 texture_scale = 32.0
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Lighting"]
-visible = false
-color = Color(1, 0.87451, 0.854902, 1)
-energy = 0.6
-blend_mode = 1
+[node name="PointLight2D5" type="PointLight2D" parent="Lighting"]
+position = Vector2(3550, 299)
+color = Color(0.878431, 0.815686, 0.501961, 1)
+energy = 1.43
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("5_m38ri")
+texture_scale = 32.0
+
+[node name="PointLight2D16" type="PointLight2D" parent="Lighting"]
+position = Vector2(5173, 257)
+color = Color(0.878431, 0.815686, 0.501961, 1)
+energy = 1.43
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("5_m38ri")
+texture_scale = 32.0
+
+[node name="PointLight2D17" type="PointLight2D" parent="Lighting"]
+position = Vector2(6012, 257)
+color = Color(0.878431, 0.815686, 0.501961, 1)
+energy = 1.43
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("5_m38ri")
+texture_scale = 32.0
+
+[node name="PointLight2D18" type="PointLight2D" parent="Lighting"]
+position = Vector2(7765, 270)
+color = Color(0.878431, 0.815686, 0.501961, 1)
+energy = 1.43
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("5_m38ri")
+texture_scale = 32.0
+
+[node name="PointLight2D19" type="PointLight2D" parent="Lighting"]
+position = Vector2(8604, 270)
+color = Color(0.878431, 0.815686, 0.501961, 1)
+energy = 1.43
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("5_m38ri")
+texture_scale = 32.0
+
+[node name="PointLight2D6" type="PointLight2D" parent="Lighting"]
+position = Vector2(-2410, -1228)
+color = Color(0.878431, 0.815686, 0.501961, 1)
+energy = 1.43
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("5_m38ri")
+texture_scale = 32.0
+
+[node name="PointLight2D8" type="PointLight2D" parent="Lighting"]
+position = Vector2(-6877, -1396)
+color = Color(0.878431, 0.815686, 0.501961, 1)
+energy = 1.43
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("5_m38ri")
+texture_scale = 32.0
+
+[node name="PointLight2D9" type="PointLight2D" parent="Lighting"]
+position = Vector2(-9675, -1463)
+color = Color(0.878431, 0.815686, 0.501961, 1)
+energy = 1.43
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("5_m38ri")
+texture_scale = 32.0
+
+[node name="PointLight2D10" type="PointLight2D" parent="Lighting"]
+position = Vector2(-8396, -834)
+color = Color(0.878431, 0.815686, 0.501961, 1)
+energy = 1.43
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("5_m38ri")
+texture_scale = 32.0
+
+[node name="PointLight2D11" type="PointLight2D" parent="Lighting"]
+position = Vector2(-10913, -322)
+color = Color(0.878431, 0.815686, 0.501961, 1)
+energy = 1.43
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("5_m38ri")
+texture_scale = 32.0
+
+[node name="PointLight2D12" type="PointLight2D" parent="Lighting"]
+position = Vector2(-10884, -1929)
+color = Color(0.878431, 0.815686, 0.501961, 1)
+energy = 1.43
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("5_m38ri")
+texture_scale = 32.0
+
+[node name="PointLight2D7" type="PointLight2D" parent="Lighting"]
+position = Vector2(-4432, -1689)
+scale = Vector2(1.33682, 1.43136)
+color = Color(0.878431, 0.815686, 0.501961, 1)
+energy = 1.43
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("5_m38ri")
+texture_scale = 32.0
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("character")]
 position = Vector2(-51, -17)
