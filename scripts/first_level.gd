@@ -6,7 +6,7 @@ extends Node2D
 @onready var blackout_layer : ColorRect = $Camera2D/CanvasLayer2/Blackout
 @onready var npc : CharacterBody2D = $NPC
 
-var blackout_timer = 0.0
+var blackout_timer = blackout_duration
 var reset_performed = false
 
 # Called when the node enters the scene tree for the first time.

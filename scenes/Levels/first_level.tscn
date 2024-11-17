@@ -1,7 +1,7 @@
-[gd_scene load_steps=60 format=3 uid="uid://by357a1rl1dgq"]
+[gd_scene load_steps=61 format=3 uid="uid://by357a1rl1dgq"]
 
 [ext_resource type="PackedScene" uid="uid://dndaw0nqyakur" path="res://scenes/Environment/trapdoor.tscn" id="1_1adv3"]
-[ext_resource type="Script" path="res://scenes/Levels/first_level.gd" id="1_133pp"]
+[ext_resource type="Script" path="res://scripts/first_level.gd" id="1_133pp"]
 [ext_resource type="PackedScene" uid="uid://dy2uvm07v2ygx" path="res://scenes/Environment/floor.tscn" id="2_8yd0h"]
 [ext_resource type="Texture2D" uid="uid://bo4ntyqo65nl" path="res://assets/Wand_Tile_sheet_.png" id="3_rq6l8"]
 [ext_resource type="Texture2D" uid="uid://55cnhohnqvjk" path="res://assets/Rails_Tile_Sheet.png" id="4_aexiq"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bqs4hpkmk22cw" path="res://scenes/Levels/test_npc.tscn" id="12_7g0yi"]
 [ext_resource type="PackedScene" uid="uid://dkxwkuhp7bqhp" path="res://scenes/Environment/lamp.tscn" id="13_ws542"]
 [ext_resource type="PackedScene" uid="uid://c7eivytv6g8pj" path="res://scenes/Items/key.tscn" id="14_pyf1i"]
+[ext_resource type="PackedScene" uid="uid://bdaj8nk3swe0f" path="res://scenes/Environment/mouse_trap.tscn" id="16_rjsop"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_a3uvg"]
 vertices = PackedVector2Array(-128, 64, -128, -128, 64, -128)
@@ -571,6 +572,7 @@ stream = ExtResource("9_ntut2")
 
 [node name="PlayerRat" parent="." groups=["Player"] instance=ExtResource("10_1agm4")]
 modulate = Color(0.625597, 0.625597, 0.625597, 1)
+z_index = 1
 position = Vector2(-10864, -1259)
 scale = Vector2(8, 8)
 speed = 1400.0
@@ -643,6 +645,15 @@ player = NodePath("../PlayerRat")
 
 [node name="PlayerSpawnPosition" type="Node2D" parent="."]
 position = Vector2(-11257, -1192)
+
+[node name="MouseTrap" parent="." node_paths=PackedStringArray("player") instance=ExtResource("16_rjsop")]
+position = Vector2(1850, 1217)
+rotation = -0.765421
+player = NodePath("../PlayerRat")
+
+[node name="MouseTrap2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("16_rjsop")]
+position = Vector2(-10283, -1144)
+player = NodePath("../PlayerRat")
 
 [connection signal="body_entered" from="Trapdoor" to="PlayerRat" method="_on_trapdoor_body_entered"]
 [connection signal="chase_ended" from="NPC" to="Camera2D/BackgroundMusic" method="play"]

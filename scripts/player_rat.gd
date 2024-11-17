@@ -83,10 +83,11 @@ func _physics_process(delta):
 	
 	
 
-func on_trap_entered():
+func on_trap_entered(trap_position: Vector2):
 	if invincibility_timer <= 0:
 		state = player_state.TRAPPED
 		trap_timer = trap_duration
+		position = trap_position - Vector2(70.0, 0)
 	
 
 
@@ -96,6 +97,8 @@ func _on_trapdoor_body_entered(body):
 		
 func steal_key():
 	key_sprite.visible = true
+	has_key = true
 	
 func return_key():
 	key_sprite.visible = false
+	has_key = false
