@@ -341,7 +341,7 @@ energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
-texture_scale = 32.0
+texture_scale = 50.0
 
 [node name="PointLight2D20" type="PointLight2D" parent="Lighting"]
 position = Vector2(1276, 2705)
@@ -350,7 +350,7 @@ energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
-texture_scale = 32.0
+texture_scale = 50.0
 
 [node name="PointLight2D21" type="PointLight2D" parent="Lighting"]
 position = Vector2(-1006, 3196)
@@ -359,7 +359,7 @@ energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
-texture_scale = 32.0
+texture_scale = 50.0
 
 [node name="PointLight2D22" type="PointLight2D" parent="Lighting"]
 position = Vector2(-2541, 3259)
@@ -368,7 +368,7 @@ energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
-texture_scale = 32.0
+texture_scale = 50.0
 
 [node name="PointLight2D2" type="PointLight2D" parent="Lighting"]
 position = Vector2(199, -1226)
@@ -377,7 +377,7 @@ energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
-texture_scale = 32.0
+texture_scale = 50.0
 
 [node name="PointLight2D3" type="PointLight2D" parent="Lighting"]
 position = Vector2(2967, -969)
@@ -386,7 +386,7 @@ energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
-texture_scale = 32.0
+texture_scale = 50.0
 
 [node name="PointLight2D13" type="PointLight2D" parent="Lighting"]
 position = Vector2(1713, -2236)
@@ -395,7 +395,7 @@ energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
-texture_scale = 32.0
+texture_scale = 50.0
 
 [node name="PointLight2D14" type="PointLight2D" parent="Lighting"]
 position = Vector2(-653, -2689)
@@ -404,7 +404,7 @@ energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
-texture_scale = 32.0
+texture_scale = 50.0
 
 [node name="PointLight2D15" type="PointLight2D" parent="Lighting"]
 position = Vector2(-2843, -2433)
@@ -413,7 +413,7 @@ energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
-texture_scale = 32.0
+texture_scale = 50.0
 
 [node name="PointLight2D4" type="PointLight2D" parent="Lighting"]
 position = Vector2(-3770, 1082)
@@ -423,7 +423,7 @@ energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
-texture_scale = 32.0
+texture_scale = 50.0
 
 [node name="PointLight2D5" type="PointLight2D" parent="Lighting"]
 position = Vector2(3550, 299)
@@ -432,7 +432,7 @@ energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
-texture_scale = 32.0
+texture_scale = 50.0
 
 [node name="PointLight2D16" type="PointLight2D" parent="Lighting"]
 position = Vector2(5173, 257)
@@ -441,7 +441,7 @@ energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
-texture_scale = 32.0
+texture_scale = 50.0
 
 [node name="PointLight2D17" type="PointLight2D" parent="Lighting"]
 position = Vector2(6012, 257)
@@ -450,7 +450,7 @@ energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
-texture_scale = 32.0
+texture_scale = 50.0
 
 [node name="PointLight2D18" type="PointLight2D" parent="Lighting"]
 position = Vector2(7765, 270)
@@ -459,7 +459,7 @@ energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
-texture_scale = 32.0
+texture_scale = 50.0
 
 [node name="PointLight2D19" type="PointLight2D" parent="Lighting"]
 position = Vector2(8604, 270)
@@ -468,7 +468,7 @@ energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
-texture_scale = 32.0
+texture_scale = 50.0
 
 [node name="PointLight2D6" type="PointLight2D" parent="Lighting"]
 position = Vector2(-2410, -1228)
@@ -477,7 +477,7 @@ energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
-texture_scale = 32.0
+texture_scale = 50.0
 
 [node name="PointLight2D8" type="PointLight2D" parent="Lighting"]
 position = Vector2(-6877, -1396)
@@ -486,7 +486,7 @@ energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
-texture_scale = 32.0
+texture_scale = 50.0
 
 [node name="PointLight2D9" type="PointLight2D" parent="Lighting"]
 position = Vector2(-9675, -1463)
@@ -495,7 +495,7 @@ energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
-texture_scale = 32.0
+texture_scale = 50.0
 
 [node name="PointLight2D10" type="PointLight2D" parent="Lighting"]
 position = Vector2(-8396, -834)
@@ -504,7 +504,7 @@ energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
-texture_scale = 32.0
+texture_scale = 50.0
 
 [node name="PointLight2D11" type="PointLight2D" parent="Lighting"]
 position = Vector2(-10913, -322)
@@ -513,7 +513,7 @@ energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
-texture_scale = 32.0
+texture_scale = 50.0
 
 [node name="PointLight2D12" type="PointLight2D" parent="Lighting"]
 position = Vector2(-10884, -1929)
@@ -522,7 +522,7 @@ energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
-texture_scale = 32.0
+texture_scale = 50.0
 
 [node name="PointLight2D7" type="PointLight2D" parent="Lighting"]
 position = Vector2(-4432, -1689)
@@ -532,7 +532,7 @@ energy = 1.43
 shadow_enabled = true
 shadow_filter = 2
 texture = ExtResource("5_m38ri")
-texture_scale = 32.0
+texture_scale = 50.0
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("character")]
 position = Vector2(-51, -17)
