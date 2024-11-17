@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 # signals
 signal player_spotted
-#signal player_caught
+signal player_caught
 signal chase_ended
 
 # avoid navigating tree in code
@@ -60,6 +60,8 @@ func _on_navigation_agent_2d_target_reached():
 		current_location_index += 1
 		current_location_index %= len(locations)
 		target = locations[current_location_index]
+	else:
+		player_caught.emit()
 
 func _on_area_2d_body_entered(body):
 	if (body == rat && !chase):

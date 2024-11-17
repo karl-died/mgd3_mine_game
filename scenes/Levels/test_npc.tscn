@@ -110,6 +110,7 @@ shape = SubResource("CapsuleShape2D_tvnml")
 [node name="visioncone" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="visioncone"]
+position = Vector2(-46.0001, -27.9998)
 polygon = PackedVector2Array(230, -23.0008, 2063, 1024.99, 2063, -1073.01)
 
 [node name="chaserange" type="Area2D" parent="."]
