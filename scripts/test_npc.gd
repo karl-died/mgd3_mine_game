@@ -13,6 +13,7 @@ signal chase_ended
 @onready var locations = locations_node.get_children()
 @export var target: Node2D = null
 @onready var anim = $AnimatedSprite2D
+@onready var key_sprite = $KeySprite
 @onready var nav_agent = $NavigationAgent2D
 
 # stats
@@ -35,6 +36,7 @@ var chase_timer = Timer.new()
 
 func _ready():
 	anim.play("default")
+	key_sprite.play("default")
 	add_child(chase_timer)
 	target = locations[current_location_index]
 
@@ -52,7 +54,10 @@ func _physics_process(_delta):
 	# movement
 	nav_agent.target_position = target.global_position
 	velocity = global_position.direction_to(nav_agent.get_next_path_position()) * current_speed
-	anim.speed_scale = 0.5 + 0.001 * velocity.length()
+	var animation_speed_scale = 0.5 + 0.001 * velocity.length()
+	anim.speed_scale = animation_speed_scale
+	key_sprite.speed_scale = animation_speed_scale
+	
 	move_and_slide()
 
 func _on_navigation_agent_2d_target_reached():
@@ -69,6 +74,13 @@ func _on_area_2d_body_entered(body):
 		target = rat
 		current_speed = running_speed
 		player_spotted.emit()
+		
+func _on_key_collider_body_entered(body):
+	print("entered")
+	print(body)
+	if (body == rat):
+		steal_key()
+		rat.steal_key()
 
 func _on_chaserange_body_exited(body):
 	if (body == rat && chase):
@@ -76,3 +88,9 @@ func _on_chaserange_body_exited(body):
 		current_speed = walking_speed
 		chase = false
 		target = locations[current_location_index]
+	
+func steal_key():
+	key_sprite.visible = false
+	
+func return_key():
+	key_sprite.visible = true

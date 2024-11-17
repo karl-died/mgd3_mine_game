@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bqs4hpkmk22cw"]
+[gd_scene load_steps=17 format=3 uid="uid://bqs4hpkmk22cw"]
 
 [ext_resource type="Script" path="res://scripts/test_npc.gd" id="1_r7xlq"]
 [ext_resource type="Texture2D" uid="uid://byei5hame5x1c" path="res://assets/spritesheet_minerwalk.png" id="2_qpysu"]
+[ext_resource type="Texture2D" uid="uid://ber40nn1ly152" path="res://assets/schlusselminer.png" id="3_sam0g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ynup"]
 radius = 20.0
@@ -49,6 +50,42 @@ height = 994.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wl4hh"]
 radius = 4677.72
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nakn"]
+atlas = ExtResource("3_sam0g")
+region = Rect2(0, 0, 1333, 1778)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apafi"]
+atlas = ExtResource("3_sam0g")
+region = Rect2(2666, 0, 1333, 1778)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nftf4"]
+atlas = ExtResource("3_sam0g")
+region = Rect2(1333, 0, 1333, 1778)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amrr8"]
+atlas = ExtResource("3_sam0g")
+region = Rect2(3999, 0, 1333, 1778)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qjsov"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nakn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apafi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nftf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amrr8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
 
 [node name="NPCCharacterBody2D" type="CharacterBody2D"]
 rotation = 1.5708
@@ -104,7 +141,7 @@ collision_layer = 513
 collision_mask = 513
 
 [node name="KeyHitbox" type="CollisionShape2D" parent="KeyCollider"]
-position = Vector2(-138, -62.9995)
+position = Vector2(-393, -68.9986)
 shape = SubResource("CapsuleShape2D_tvnml")
 
 [node name="visioncone" type="Area2D" parent="."]
@@ -118,5 +155,12 @@ polygon = PackedVector2Array(230, -23.0008, 2063, 1024.99, 2063, -1073.01)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="chaserange"]
 shape = SubResource("CircleShape2D_wl4hh")
 
+[node name="KeySprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(215, -31.0008)
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_qjsov")
+
+[connection signal="body_entered" from="KeyCollider" to="." method="_on_key_collider_body_entered"]
 [connection signal="body_entered" from="visioncone" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="chaserange" to="." method="_on_chaserange_body_exited"]

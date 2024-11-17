@@ -26,6 +26,10 @@ var invincibility_timer = -0.1
 var has_key = false
 
 @onready var anim : AnimatedSprite2D = $AnimatedSprite2D
+@onready var key_sprite : AnimatedSprite2D = $KeySprite
+
+func _ready():
+	key_sprite.visible = false
 
 
 func _physics_process(delta):
@@ -56,9 +60,6 @@ func _physics_process(delta):
 				state = player_state.IDLE
 				
 		player_state.IDLE, player_state.RUNNING:
-			#move_direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
-			#move_direction.y = Input.get_action_strength("down") - Input.get_action_strength("up")
-			#move_direction = move_direction.normalized()
 			move_direction = Input.get_vector("left", "right", "up", "down")
 			anim.speed_scale = 0.5 + 0.5 * move_direction.length()
 			
@@ -66,8 +67,10 @@ func _physics_process(delta):
 				look_direction = move_direction
 				#anim.material.set("shader_parameter/rotadtion", -look_direction.angle())
 				anim.play("run")
+				key_sprite.play("default")
 			else:
 				anim.play("default")
+				key_sprite.stop()
 				
 			rotation_degrees = (look_direction.angle() / PI) * 180
 			velocity = move_direction * speed
@@ -90,3 +93,9 @@ func on_trap_entered():
 func _on_trapdoor_body_entered(body):
 	if (body == self && has_key):
 		print("success!")
+		
+func steal_key():
+	key_sprite.visible = true
+	
+func return_key():
+	key_sprite.visible = false

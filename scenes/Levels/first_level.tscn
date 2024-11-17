@@ -634,6 +634,7 @@ position = Vector2(-1063, 3531)
 position = Vector2(-3335, 467)
 
 [node name="Key" parent="." node_paths=PackedStringArray("key_owner", "npc", "player") instance=ExtResource("14_pyf1i")]
+visible = false
 position = Vector2(1429, 454)
 scale = Vector2(9.025, 9.025)
 key_owner = NodePath("../NPC")

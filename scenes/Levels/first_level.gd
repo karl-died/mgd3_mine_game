@@ -12,8 +12,6 @@ var reset_performed = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_reset_level()
-	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -23,7 +21,6 @@ func _process(delta):
 		blackout_layer.visible = true
 	elif !reset_performed:
 		_reset_level()
-		print("reset")
 		blackout_layer.visible = false
 		reset_performed = true
 	
@@ -34,6 +31,8 @@ func on_npc_reached_player():
 	
 func _reset_level():
 	player.position = $PlayerSpawnPosition.position
+	player.return_key()
+	npc.return_key()
 	$Camera2D/BackgroundMusic.play()
-	pass
+
 	
