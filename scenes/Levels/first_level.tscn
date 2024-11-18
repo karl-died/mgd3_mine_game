@@ -573,11 +573,12 @@ stream = ExtResource("9_ntut2")
 [node name="PlayerRat" parent="." groups=["Player"] instance=ExtResource("10_1agm4")]
 modulate = Color(0.625597, 0.625597, 0.625597, 1)
 z_index = 1
-position = Vector2(-10864, -1259)
+position = Vector2(-11253, -1259)
 scale = Vector2(8, 8)
 speed = 1400.0
 dash_boost = 500.0
 dash_duration = 0.3
+trap_duration = 5.0
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(-1, 0)
@@ -652,7 +653,7 @@ rotation = -0.765421
 player = NodePath("../PlayerRat")
 
 [node name="MouseTrap2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("16_rjsop")]
-position = Vector2(646, -1357)
+position = Vector2(-10724, -1246)
 rotation = 1.89351
 player = NodePath("../PlayerRat")
 

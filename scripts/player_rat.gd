@@ -58,6 +58,7 @@ func _physics_process(delta):
 			trap_timer -= delta
 			if Input.is_action_just_pressed("jump"):
 				trap_timer -= trap_spam_bonus
+				trap_timer_sprite.trigger_bump()
 				anim.play("run")
 			else:
 				anim.play("default")
