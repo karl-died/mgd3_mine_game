@@ -32,7 +32,8 @@ func on_npc_reached_player():
 func _reset_level():
 	player.position = $PlayerSpawnPosition.position
 	player.return_key()
-	npc.return_key()
+	if npc != null:
+		npc.return_key()
 	$Camera2D/BackgroundMusic.play()
 
 	
