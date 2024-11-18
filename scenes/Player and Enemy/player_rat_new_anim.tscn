@@ -155,4 +155,4 @@ position = Vector2(-8, 0)
 rotation = 1.5708
 scale = Vector2(0.015, 0.015)
 sprite_frames = SubResource("SpriteFrames_cjlpo")
-frame_progress = 0.102201
+frame_progress = 0.360296

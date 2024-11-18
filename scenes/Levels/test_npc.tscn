@@ -45,8 +45,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tvnml"]
-radius = 332.0
-height = 994.0
+radius = 155.0
+height = 324.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wl4hh"]
 radius = 4677.72
@@ -141,7 +141,7 @@ collision_layer = 513
 collision_mask = 513
 
 [node name="KeyHitbox" type="CollisionShape2D" parent="KeyCollider"]
-position = Vector2(-393, -68.9986)
+position = Vector2(-471, 52.0017)
 shape = SubResource("CapsuleShape2D_tvnml")
 
 [node name="visioncone" type="Area2D" parent="."]

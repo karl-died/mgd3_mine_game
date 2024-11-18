@@ -76,8 +76,6 @@ func _on_area_2d_body_entered(body):
 		player_spotted.emit()
 		
 func _on_key_collider_body_entered(body):
-	print("entered")
-	print(body)
 	if (body == rat):
 		steal_key()
 		rat.steal_key()
