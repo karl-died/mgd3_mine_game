@@ -20,7 +20,6 @@ func _process(delta):
 	set_frame_and_progress(round(current_frame), 0.0)
 	current_scale = lerp(current_scale, base_scale, 1.0 - bump_decay)
 	set_scale(Vector2(current_scale, current_scale))
-	print(current_scale)
 
 func set_duration(val : float):
 	duration = val

@@ -653,7 +653,7 @@ rotation = -0.765421
 player = NodePath("../PlayerRat")
 
 [node name="MouseTrap2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("16_rjsop")]
-position = Vector2(-10724, -1246)
+position = Vector2(-3999, -1855)
 rotation = 1.89351
 player = NodePath("../PlayerRat")
 
