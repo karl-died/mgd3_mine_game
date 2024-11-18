@@ -1,0 +1,80 @@
+[gd_scene load_steps=13 format=3 uid="uid://caivn8sx3wmgf"]
+
+[ext_resource type="Texture2D" uid="uid://bd83b5uchu4ny" path="res://assets/status_bars.png" id="1_jxjpp"]
+[ext_resource type="Script" path="res://scripts/timer_sprite.gd" id="2_m1k4q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk3vs"]
+atlas = ExtResource("1_jxjpp")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhyw1"]
+atlas = ExtResource("1_jxjpp")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8nrg"]
+atlas = ExtResource("1_jxjpp")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ynof"]
+atlas = ExtResource("1_jxjpp")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6p3op"]
+atlas = ExtResource("1_jxjpp")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu1au"]
+atlas = ExtResource("1_jxjpp")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1liux"]
+atlas = ExtResource("1_jxjpp")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5vto"]
+atlas = ExtResource("1_jxjpp")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j644a"]
+atlas = ExtResource("1_jxjpp")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4umhv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nk3vs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhyw1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8nrg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ynof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6p3op")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qu1au")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1liux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5vto")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j644a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="TimerSprite" type="AnimatedSprite2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_4umhv")
+script = ExtResource("2_m1k4q")

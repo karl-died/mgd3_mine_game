@@ -27,9 +27,11 @@ var has_key = false
 
 @onready var anim : AnimatedSprite2D = $AnimatedSprite2D
 @onready var key_sprite : AnimatedSprite2D = $KeySprite
+@onready var dash_recovery_timer_sprite : AnimatedSprite2D = $TimerSprite
 
 func _ready():
 	key_sprite.visible = false
+	dash_recovery_timer_sprite.set_duration(dash_recovery_duration)
 
 
 func _physics_process(delta):
@@ -47,6 +49,7 @@ func _physics_process(delta):
 			dash_recovery_timer -= delta
 	
 	invincibility_timer -= delta
+	
 	
 	match state:
 		player_state.TRAPPED:
@@ -81,6 +84,7 @@ func _physics_process(delta):
 			anim.play("dash")
 			move_and_slide()
 	
+	dash_recovery_timer_sprite.set_value(dash_recovery_timer)
 	
 
 func on_trap_entered(trap_position: Vector2):
