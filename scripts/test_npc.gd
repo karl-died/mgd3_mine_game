@@ -40,20 +40,22 @@ func _ready():
 	add_child(chase_timer)
 	target = locations[current_location_index]
 
-func _physics_process(_delta):
+func _physics_process(delta):
+	print(nav_agent.path_postprocessing)
 	# fix jitter on reaching player by smoothly adjusting speed
 	var direction = (target.position - position).normalized()
+	var next_dir = (nav_agent.get_next_path_position() - position).normalized()
 	if (position.distance_to(target.position) < 100 && target == rat):
 		current_speed = lerp(current_speed, 0.0, .1)
 	elif (target == rat):
 		current_speed = lerp(current_speed, running_speed, .1)
-		rotation=lerp_angle(rotation, atan2(direction.y, direction.x), .1)
+		rotation=lerp_angle(rotation, atan2(next_dir.y, next_dir.x), .1)
 	else:
-		rotation=lerp_angle(rotation, atan2(direction.y, direction.x), .1)
+		rotation=lerp_angle(rotation, atan2(next_dir.y, next_dir.x), .1)
 
 	# movement
 	nav_agent.target_position = target.global_position
-	velocity = global_position.direction_to(nav_agent.get_next_path_position()) * current_speed
+	velocity = global_position.direction_to(nav_agent.get_next_path_position()) * current_speed * delta * 60
 	var animation_speed_scale = 0.5 + 0.001 * velocity.length()
 	anim.speed_scale = animation_speed_scale
 	key_sprite.speed_scale = animation_speed_scale
@@ -71,6 +73,7 @@ func _on_navigation_agent_2d_target_reached():
 func _on_area_2d_body_entered(body):
 	if (body == rat && !chase):
 		chase = true
+		nav_agent.set_path_postprocessing(0)
 		target = rat
 		current_speed = running_speed
 		player_spotted.emit()
@@ -85,6 +88,7 @@ func _on_chaserange_body_exited(body):
 		chase_ended.emit()
 		current_speed = walking_speed
 		chase = false
+		nav_agent.set_path_postprocessing(1)
 		target = locations[current_location_index]
 	
 func steal_key():
