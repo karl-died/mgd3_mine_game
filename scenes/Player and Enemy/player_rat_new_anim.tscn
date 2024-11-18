@@ -158,6 +158,11 @@ scale = Vector2(0.015, 0.015)
 sprite_frames = SubResource("SpriteFrames_cjlpo")
 frame_progress = 0.360296
 
-[node name="TimerSprite" parent="." instance=ExtResource("5_vhi0k")]
+[node name="DashTimerSprite" parent="." instance=ExtResource("5_vhi0k")]
+position = Vector2(6, 8)
+scale = Vector2(0.33, 0.33)
+
+[node name="TrapTimerSprite" parent="." instance=ExtResource("5_vhi0k")]
+modulate = Color(0.780392, 0.172549, 0.188235, 1)
 position = Vector2(6, 8)
 scale = Vector2(0.33, 0.33)

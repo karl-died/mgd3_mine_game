@@ -20,18 +20,20 @@ var look_direction : Vector2 = Vector2(1, 0)
 
 var state = player_state.IDLE
 var dash_timer = dash_duration
-var dash_recovery_timer = dash_recovery_duration
-var trap_timer = trap_duration
+var dash_recovery_timer = 0.0
+var trap_timer = 0.0
 var invincibility_timer = -0.1
 var has_key = false
 
 @onready var anim : AnimatedSprite2D = $AnimatedSprite2D
 @onready var key_sprite : AnimatedSprite2D = $KeySprite
-@onready var dash_recovery_timer_sprite : AnimatedSprite2D = $TimerSprite
+@onready var dash_recovery_timer_sprite : AnimatedSprite2D = $DashTimerSprite
+@onready var trap_timer_sprite : AnimatedSprite2D = $TrapTimerSprite
 
 func _ready():
 	key_sprite.visible = false
 	dash_recovery_timer_sprite.set_duration(dash_recovery_duration)
+	trap_timer_sprite.set_duration(trap_duration)
 
 
 func _physics_process(delta):
@@ -85,6 +87,7 @@ func _physics_process(delta):
 			move_and_slide()
 	
 	dash_recovery_timer_sprite.set_value(dash_recovery_timer)
+	trap_timer_sprite.set_value(trap_timer)
 	
 
 func on_trap_entered(trap_position: Vector2):
