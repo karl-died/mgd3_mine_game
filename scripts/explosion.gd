@@ -1,6 +1,7 @@
 extends Node2D
 
 
+
 @export var flash_intensity : float = 1.0
 @export_range(0.01, 0.99) var flash_decay : float = 0.2
 @export var shockwave_intensity : float = 0.7

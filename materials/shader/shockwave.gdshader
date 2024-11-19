@@ -17,4 +17,3 @@ void fragment() {
 	vec4 col = texture(screen_texture, SCREEN_UV - disp);
 	COLOR = col;
 }
-
