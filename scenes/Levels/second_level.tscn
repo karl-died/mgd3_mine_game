@@ -662,6 +662,7 @@ player = NodePath("../PlayerRat")
 [connection signal="body_entered" from="Trapdoor" to="PlayerRat" method="_on_trapdoor_body_entered"]
 [connection signal="chase_ended" from="NPC" to="Camera2D/BackgroundMusic" method="play"]
 [connection signal="chase_ended" from="NPC" to="Camera2D/ActionMusic" method="stop"]
+[connection signal="player_caught" from="NPC" to="." method="on_npc_reached_player"]
 [connection signal="player_spotted" from="NPC" to="Camera2D/BackgroundMusic" method="stop"]
 [connection signal="player_spotted" from="NPC" to="Camera2D/ActionMusic" method="play"]
 [connection signal="target_reached" from="NPC/NavigationAgent2D" to="NPC" method="_on_navigation_agent_2d_target_reached"]
