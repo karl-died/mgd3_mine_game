@@ -41,7 +41,6 @@ func _ready():
 	target = locations[current_location_index]
 
 func _physics_process(delta):
-	print(nav_agent.path_postprocessing)
 	# fix jitter on reaching player by smoothly adjusting speed
 	var direction = (target.position - position).normalized()
 	var next_dir = (nav_agent.get_next_path_position() - position).normalized()
