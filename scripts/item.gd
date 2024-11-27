@@ -6,6 +6,7 @@ extends Node2D
 var parent_position_node : Node2D = null
 
 func _process(delta):
+	print(global_position)
 	if parent_position_node != null:
 		global_position = parent_position_node.global_position
 		rotation = parent_position_node.rotation

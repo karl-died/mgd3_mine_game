@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgclyijh1l4ql"]
+
+[ext_resource type="Script" path="res://scripts/key_item.gd" id="1_63oiu"]
+[ext_resource type="Texture2D" uid="uid://de3ljwi5gfk45" path="res://assets/keyratte.png" id="2_tje8c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eg4j2"]
+atlas = ExtResource("2_tje8c")
+region = Rect2(0, 0, 2000, 3000)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_23k7u"]
+
+[node name="Key_Item" type="Node2D"]
+modulate = Color(0.627451, 0.627451, 0.627451, 1)
+script = ExtResource("1_63oiu")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 3)
+scale = Vector2(0.015, 0.015)
+texture = SubResource("AtlasTexture_eg4j2")
+
+[node name="CollisionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_23k7u")

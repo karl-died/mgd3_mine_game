@@ -11,3 +11,6 @@ func _ready():
 func _process(delta):
 	super(delta)
 	pass
+	
+func pick_up(parent: Node2D):
+	parent_position_node = parent

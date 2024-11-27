@@ -38,8 +38,7 @@ func _ready():
 	dash_recovery_timer_sprite.set_duration(dash_recovery_duration)
 	trap_timer_sprite.set_duration(trap_duration)
 	item_pickup_area.area_entered.connect(on_item_area_entered)
-	for item_sprite in $ItemSprites.get_children():
-		item_sprite.visible = false
+	drop_item()
 
 
 func _physics_process(delta):
@@ -58,6 +57,8 @@ func _physics_process(delta):
 	
 	invincibility_timer -= delta
 	
+	if Input.is_action_just_pressed("drop"):
+		drop_item()
 	
 	match state:
 		player_state.TRAPPED:
@@ -106,22 +107,26 @@ func on_trap_entered(trap_position: Vector2):
 	
 func on_item_area_entered(item_area: Node2D):
 	var item = item_area.get_parent()
-	print(item.name)
-	if current_item != null:
-		current_item.drop()
 	
-	for item_sprite in $ItemSprites.get_children():
-		item_sprite.visible = false
+	drop_item()
 	
 	item.pick_up(self)
 	current_item = item
 	
 	match item.name:
 		"TNT_Item":
-			$ItemSprites/TNTSprite.visible = true
+			#$ItemSprites/TNTSprite.visible = true
+			pass
 		"Key_Item":
 			$ItemSprites/KeySprite.visible = true
 			
+			
+func drop_item():
+	if current_item != null:
+		current_item.drop()
+	current_item = null
+	for item_sprite in $ItemSprites.get_children():
+		item_sprite.visible = false
 
 func _on_trapdoor_body_entered(body):
 	if (body == self && has_key):
