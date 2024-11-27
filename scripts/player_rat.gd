@@ -26,14 +26,20 @@ var invincibility_timer = -0.1
 var has_key = false
 
 @onready var anim : AnimatedSprite2D = $AnimatedSprite2D
-@onready var key_sprite : AnimatedSprite2D = $KeySprite
+@onready var key_sprite : AnimatedSprite2D = $ItemSprites/KeySprite
 @onready var dash_recovery_timer_sprite : AnimatedSprite2D = $DashTimerSprite
 @onready var trap_timer_sprite : AnimatedSprite2D = $TrapTimerSprite
+@onready var item_pickup_area : Area2D = $ItemPickupArea
+
+@onready var current_item : Item = null
 
 func _ready():
 	key_sprite.visible = false
 	dash_recovery_timer_sprite.set_duration(dash_recovery_duration)
 	trap_timer_sprite.set_duration(trap_duration)
+	item_pickup_area.area_entered.connect(on_item_area_entered)
+	for item_sprite in $ItemSprites.get_children():
+		item_sprite.visible = false
 
 
 func _physics_process(delta):
@@ -97,7 +103,25 @@ func on_trap_entered(trap_position: Vector2):
 		trap_timer = trap_duration
 		position = trap_position - Vector2(70.0, 0)
 	
-
+	
+func on_item_area_entered(item_area: Node2D):
+	var item = item_area.get_parent()
+	print(item.name)
+	if current_item != null:
+		current_item.drop()
+	
+	for item_sprite in $ItemSprites.get_children():
+		item_sprite.visible = false
+	
+	item.pick_up(self)
+	current_item = item
+	
+	match item.name:
+		"TNT_Item":
+			$ItemSprites/TNTSprite.visible = true
+		"Key_Item":
+			$ItemSprites/KeySprite.visible = true
+			
 
 func _on_trapdoor_body_entered(body):
 	if (body == self && has_key):

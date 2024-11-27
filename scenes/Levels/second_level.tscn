@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://dr8b8xfawcjs4"]
+[gd_scene load_steps=62 format=3 uid="uid://dr8b8xfawcjs4"]
 
 [ext_resource type="Script" path="res://scripts/first_level.gd" id="1_d4g2q"]
 [ext_resource type="PackedScene" uid="uid://dndaw0nqyakur" path="res://scenes/Environment/trapdoor.tscn" id="2_elbs2"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dkxwkuhp7bqhp" path="res://scenes/Environment/lamp.tscn" id="14_1orb4"]
 [ext_resource type="PackedScene" uid="uid://c7eivytv6g8pj" path="res://scenes/Items/key.tscn" id="15_5scwa"]
 [ext_resource type="PackedScene" uid="uid://bdaj8nk3swe0f" path="res://scenes/Environment/mouse_trap.tscn" id="16_l5etc"]
+[ext_resource type="PackedScene" uid="uid://ckocvqggld74o" path="res://scenes/Items/tnt.tscn" id="17_kxqep"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ovsdr"]
 vertices = PackedVector2Array(-128, 128, -128, -128, 128, -128)
@@ -658,6 +659,10 @@ player = NodePath("../PlayerRat")
 position = Vector2(-3704, -1842)
 rotation = 1.89351
 player = NodePath("../PlayerRat")
+
+[node name="TNT_Item" parent="." instance=ExtResource("17_kxqep")]
+position = Vector2(-9464, -636)
+scale = Vector2(4, 4)
 
 [connection signal="body_entered" from="Trapdoor" to="PlayerRat" method="_on_trapdoor_body_entered"]
 [connection signal="chase_ended" from="NPC" to="Camera2D/BackgroundMusic" method="play"]
