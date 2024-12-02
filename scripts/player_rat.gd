@@ -30,6 +30,7 @@ var has_key = false
 @onready var dash_recovery_timer_sprite : AnimatedSprite2D = $DashTimerSprite
 @onready var trap_timer_sprite : AnimatedSprite2D = $TrapTimerSprite
 @onready var item_pickup_area : Area2D = $ItemPickupArea
+@onready var item_indicator_area : Area2D = $ItemIndicatorArea
 
 @onready var current_item : Item = null
 
@@ -38,7 +39,8 @@ func _ready():
 	dash_recovery_timer_sprite.set_duration(dash_recovery_duration)
 	trap_timer_sprite.set_duration(trap_duration)
 	item_pickup_area.area_entered.connect(on_item_area_entered)
-	drop_item()
+	item_indicator_area.area_entered.connect(on_item_indicator_area_entered)
+	item_indicator_area.area_exited.connect(on_item_indicator_area_exited)
 
 
 func _physics_process(delta):
@@ -111,6 +113,8 @@ func on_item_area_entered(item_area: Node2D):
 	drop_item()
 	
 	item.pick_up(self)
+	item.hide_indicator()
+		
 	current_item = item
 	
 	match item.name:
@@ -120,10 +124,17 @@ func on_item_area_entered(item_area: Node2D):
 		"Key_Item":
 			$ItemSprites/KeySprite.visible = true
 			
+func on_item_indicator_area_entered(item_area: Node2D):
+	item_area.get_parent().show_indicator()
+	
+func on_item_indicator_area_exited(item_area: Node2D):
+	item_area.get_parent().hide_indicator()
+			
 			
 func drop_item():
 	if current_item != null:
 		current_item.drop()
+		current_item.show_indicator()
 	current_item = null
 	for item_sprite in $ItemSprites.get_children():
 		item_sprite.visible = false
