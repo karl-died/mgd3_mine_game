@@ -14,6 +14,7 @@ enum player_state {
 @export var dash_invincibility_duration : float = 0.1
 @export var trap_spam_bonus : float = 0.5
 @export var trap_duration : float = 3.0
+@export var key_npc : CharacterBody2D = null
 
 var move_direction : Vector2 = Vector2(0, 0)
 var look_direction : Vector2 = Vector2(1, 0)
@@ -108,10 +109,12 @@ func on_trap_entered(trap_position: Vector2):
 	
 	
 func on_item_area_entered(item_area: Node2D):
+	
 	var item = item_area.get_parent()
+	if item.get_groups().find("Item") == -1:
+		return
 	
 	drop_item()
-	
 	item.pick_up(self)
 	item.hide_indicator()
 		
@@ -123,18 +126,23 @@ func on_item_area_entered(item_area: Node2D):
 			pass
 		"Key_Item":
 			$ItemSprites/KeySprite.visible = true
+			key_npc.steal_key()
+			
 			
 func on_item_indicator_area_entered(item_area: Node2D):
-	item_area.get_parent().show_indicator()
+	if item_area.get_parent().get_groups().find("Item") != -1:
+		item_area.get_parent().show_indicator()
 	
 func on_item_indicator_area_exited(item_area: Node2D):
-	item_area.get_parent().hide_indicator()
+	if item_area.get_parent().get_groups().find("Item") != -1:
+		item_area.get_parent().hide_indicator()
 			
 			
 func drop_item():
 	if current_item != null:
 		current_item.drop()
 		current_item.show_indicator()
+		current_item.visible = true
 	current_item = null
 	for item_sprite in $ItemSprites.get_children():
 		item_sprite.visible = false

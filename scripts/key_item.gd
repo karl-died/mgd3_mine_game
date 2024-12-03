@@ -10,5 +10,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	super(delta)
+	#print(global_position)
+	#if parent_position_node != null:
+	#	print(parent_position_node.name)
 	pass
 	

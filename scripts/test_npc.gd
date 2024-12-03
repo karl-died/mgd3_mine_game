@@ -15,6 +15,7 @@ signal chase_ended
 @onready var anim = $AnimatedSprite2D
 @onready var key_sprite = $KeySprite
 @onready var nav_agent = $NavigationAgent2D
+@onready var item_pickup_area : Area2D = $ItemPickupArea
 
 # stats
 var walking_speed : float = 350
@@ -32,6 +33,7 @@ var chase = false
 var has_vision_of_rat = false
 var chase_timer = Timer.new()
 
+var key_item = null
 
 
 func _ready():
@@ -39,6 +41,8 @@ func _ready():
 	key_sprite.play("default")
 	add_child(chase_timer)
 	target = locations[current_location_index]
+	key_sprite.visible = false
+	item_pickup_area.area_entered.connect(_on_item_pickup_area_entered)
 
 func _physics_process(delta):
 	# fix jitter on reaching player by smoothly adjusting speed
@@ -76,7 +80,17 @@ func _on_area_2d_body_entered(body):
 		target = rat
 		current_speed = running_speed
 		player_spotted.emit()
-		
+
+
+func _on_item_pickup_area_entered(area: Area2D):
+	var item = area.get_parent()
+	match item.name:
+		"Key_Item":
+			key_item = item
+			item.pick_up(self)
+			return_key()
+			rat.return_key()
+
 func _on_key_collider_body_entered(body):
 	if (body == rat):
 		steal_key()
@@ -92,6 +106,10 @@ func _on_chaserange_body_exited(body):
 	
 func steal_key():
 	key_sprite.visible = false
+	if key_item != null:
+		key_item = null
 	
 func return_key():
 	key_sprite.visible = true
+	if key_item != null:
+		key_item.visible = false

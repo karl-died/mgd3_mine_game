@@ -13,6 +13,9 @@ fill_from = Vector2(0.5, 0.5)
 metadata/_snap_enabled = true
 
 [sub_resource type="FontFile" id="FontFile_5u5fq"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/21/0/ascent = 0.0
 cache/0/21/0/descent = 0.0
 cache/0/21/0/underline_position = 0.0

@@ -28,6 +28,6 @@ collision_mask = 9
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_23k7u")
 
-[node name="ItemPickupIndicator" parent="." instance=ExtResource("3_crd02")]
+[node name="ItemPickupIndicator" parent="." groups=["Item"] instance=ExtResource("3_crd02")]
 visible = false
 scale = Vector2(0.25, 0.25)

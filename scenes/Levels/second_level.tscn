@@ -573,7 +573,7 @@ autoplay = true
 [node name="ActionMusic" type="AudioStreamPlayer2D" parent="Camera2D"]
 stream = ExtResource("10_3lt7w")
 
-[node name="PlayerRat" parent="." groups=["Player"] instance=ExtResource("11_1ga0d")]
+[node name="PlayerRat" parent="." node_paths=PackedStringArray("key_npc") groups=["Player"] instance=ExtResource("11_1ga0d")]
 modulate = Color(0.625597, 0.625597, 0.625597, 1)
 z_index = 1
 position = Vector2(-9968, -656)
@@ -582,6 +582,7 @@ speed = 1400.0
 dash_boost = 500.0
 dash_duration = 0.3
 trap_duration = 5.0
+key_npc = NodePath("../NPC")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -640,7 +641,7 @@ position = Vector2(-1063, 3531)
 position = Vector2(-3335, 467)
 
 [node name="PlayerSpawnPosition" type="Node2D" parent="."]
-position = Vector2(-10118, -666)
+position = Vector2(1191, 476)
 
 [node name="MouseTrap" parent="." node_paths=PackedStringArray("player") instance=ExtResource("16_l5etc")]
 position = Vector2(1850, 1217)
@@ -656,8 +657,8 @@ player = NodePath("../PlayerRat")
 position = Vector2(-9464, -636)
 scale = Vector2(4, 4)
 
-[node name="Key_Item" parent="." instance=ExtResource("17_mgx54")]
-position = Vector2(-9474, -442)
+[node name="Key_Item" parent="." groups=["Item"] instance=ExtResource("17_mgx54")]
+position = Vector2(712, 249)
 scale = Vector2(8, 8)
 
 [connection signal="body_entered" from="Trapdoor" to="PlayerRat" method="_on_trapdoor_body_entered"]

@@ -15,6 +15,7 @@ func _process(delta):
 		pickup_indicator.global_rotation = 0
 		
 func pick_up(parent: Node2D):
+	print(parent.name)
 	parent_position_node = parent
 	sprite.visible = false
 	
