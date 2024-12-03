@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpmcwyw8flk6i"]
+
+[ext_resource type="Texture2D" uid="uid://bl1em37otj0go" path="res://assets/locked_door.png" id="1_bqgcv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qqyev"]
+radius = 8.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s2nsg"]
+radius = 11.875
+height = 115.75
+
+[node name="LockedDoor" type="Node2D"]
+modulate = Color(0.627451, 0.627451, 0.627451, 1)
+position = Vector2(0, 1)
+scale = Vector2(8, 8)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0.25, 32)
+texture = ExtResource("1_bqgcv")
+
+[node name="LockArea" type="Area2D" parent="."]
+position = Vector2(0, 18.375)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LockArea"]
+position = Vector2(0, 0.125)
+shape = SubResource("CircleShape2D_qqyev")
+
+[node name="DestrucktionArea" type="Area2D" parent="."]
+position = Vector2(0, 1.875)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DestrucktionArea"]
+position = Vector2(-0.125, 3.125)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_s2nsg")

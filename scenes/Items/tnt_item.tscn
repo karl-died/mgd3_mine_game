@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckocvqggld74o"]
+[gd_scene load_steps=6 format=3 uid="uid://ckocvqggld74o"]
 
 [ext_resource type="Script" path="res://scripts/tnt_item.gd" id="1_5vguq"]
 [ext_resource type="Texture2D" uid="uid://bcqy6qd87a3l" path="res://assets/pixel_tnt.png" id="1_to6k3"]
 [ext_resource type="PackedScene" uid="uid://bcuwrnihv8iik" path="res://scenes/Items/item_pickup_indicator.tscn" id="3_o3ral"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_23k7u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ctoi6"]
+radius = 139.19
 
 [node name="TNT_Item" type="Node2D"]
 modulate = Color(0.627451, 0.627451, 0.627451, 1)
@@ -27,3 +30,8 @@ shape = SubResource("CapsuleShape2D_23k7u")
 [node name="ItemPickupIndicator" parent="." groups=["Item"] instance=ExtResource("3_o3ral")]
 visible = false
 scale = Vector2(0.25, 0.25)
+
+[node name="DestructionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DestructionArea"]
+shape = SubResource("CircleShape2D_ctoi6")

@@ -1,3 +1,4 @@
+class_name PlayerRat
 extends CharacterBody2D
 
 enum player_state {

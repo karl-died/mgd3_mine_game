@@ -1,6 +1,6 @@
-[gd_scene load_steps=62 format=3 uid="uid://dr8b8xfawcjs4"]
+[gd_scene load_steps=64 format=3 uid="uid://dr8b8xfawcjs4"]
 
-[ext_resource type="Script" path="res://scripts/first_level.gd" id="1_d4g2q"]
+[ext_resource type="Script" path="res://scripts/second_level.gd" id="1_ha6qf"]
 [ext_resource type="PackedScene" uid="uid://dndaw0nqyakur" path="res://scenes/Environment/trapdoor.tscn" id="2_elbs2"]
 [ext_resource type="PackedScene" uid="uid://dy2uvm07v2ygx" path="res://scenes/Environment/floor.tscn" id="3_fxhq6"]
 [ext_resource type="Texture2D" uid="uid://bo4ntyqo65nl" path="res://assets/Wand_Tile_sheet_.png" id="4_1y4c2"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://bdaj8nk3swe0f" path="res://scenes/Environment/mouse_trap.tscn" id="16_l5etc"]
 [ext_resource type="PackedScene" uid="uid://ckocvqggld74o" path="res://scenes/Items/tnt_item.tscn" id="17_kxqep"]
 [ext_resource type="PackedScene" uid="uid://dgclyijh1l4ql" path="res://scenes/Items/key_item.tscn" id="17_mgx54"]
+[ext_resource type="PackedScene" uid="uid://c1bcfxkak7vml" path="res://scenes/Environment/tnt_chest.tscn" id="18_qgkem"]
+[ext_resource type="PackedScene" uid="uid://bpmcwyw8flk6i" path="res://scenes/Environment/locked_door.tscn" id="19_uyisx"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ovsdr"]
 vertices = PackedVector2Array(-128, 128, -128, -128, 128, -128)
@@ -334,7 +336,7 @@ agent_radius = 70.0
 shader = ExtResource("12_1yep6")
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_d4g2q")
+script = ExtResource("1_ha6qf")
 
 [node name="Trapdoor" parent="." instance=ExtResource("2_elbs2")]
 modulate = Color(0.452586, 0.452586, 0.452586, 1)
@@ -415,7 +417,7 @@ texture = ExtResource("6_qkchj")
 texture_scale = 50.0
 
 [node name="PointLight2D13" type="PointLight2D" parent="Lighting"]
-position = Vector2(1730, -2905)
+position = Vector2(1564, -3244)
 color = Color(0.878431, 0.815686, 0.501961, 1)
 energy = 1.05
 shadow_enabled = true
@@ -424,7 +426,7 @@ texture = ExtResource("6_qkchj")
 texture_scale = 50.0
 
 [node name="PointLight2D14" type="PointLight2D" parent="Lighting"]
-position = Vector2(-540, -3800)
+position = Vector2(-569, -2054)
 color = Color(0.878431, 0.815686, 0.501961, 1)
 energy = 1.05
 shadow_enabled = true
@@ -575,7 +577,7 @@ stream = ExtResource("10_3lt7w")
 
 [node name="PlayerRat" parent="." node_paths=PackedStringArray("key_npc") groups=["Player"] instance=ExtResource("11_1ga0d")]
 modulate = Color(0.625597, 0.625597, 0.625597, 1)
-z_index = 1
+z_index = 2
 position = Vector2(-9968, -656)
 scale = Vector2(8, 8)
 speed = 1400.0
@@ -654,12 +656,22 @@ rotation = 1.89351
 player = NodePath("../PlayerRat")
 
 [node name="TNT_Item" parent="." groups=["Item"] instance=ExtResource("17_kxqep")]
-position = Vector2(-9464, -636)
-scale = Vector2(4, 4)
+z_index = 1
+position = Vector2(1035, -3633)
+rotation = -0.470849
+scale = Vector2(6, 6)
 
 [node name="Key_Item" parent="." groups=["Item"] instance=ExtResource("17_mgx54")]
 position = Vector2(712, 249)
 scale = Vector2(8, 8)
+
+[node name="TNT_Chest" parent="." instance=ExtResource("18_qgkem")]
+position = Vector2(1030, -3607)
+rotation = -0.733331
+
+[node name="LockedDoor" parent="." instance=ExtResource("19_uyisx")]
+position = Vector2(4184, 161)
+rotation = 1.5708
 
 [connection signal="body_entered" from="Trapdoor" to="PlayerRat" method="_on_trapdoor_body_entered"]
 [connection signal="chase_ended" from="NPC" to="Camera2D/BackgroundMusic" method="play"]
