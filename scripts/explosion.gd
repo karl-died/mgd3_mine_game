@@ -1,5 +1,5 @@
+class_name Explosion
 extends Node2D
-
 
 
 @export var flash_intensity : float = 1.0

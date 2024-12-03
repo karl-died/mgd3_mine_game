@@ -5,8 +5,16 @@ extends Node2D
 @onready var player : PlayerRat = $PlayerRat
 @onready var blackout_layer : ColorRect = $Camera2D/CanvasLayer2/Blackout
 @onready var npc : CharacterBody2D = $NPC
+@onready var explosion : Explosion = $Explosion
 @onready var tnt_chest : TNT_Chest = $TNT_Chest
-@onready var key_item = $Key_Item
+@onready var key_item : Key_Item = $Key_Item
+@onready var tnt_item : TNT_Item = $TNT_Item
+
+
+var explosion_timer = 11.5
+var tnt_ignited = false
+
+@onready var tnt_music : AudioStreamPlayer2D = $Camera2D/TNTMusic
 
 var blackout_timer = blackout_duration
 var reset_performed = false
@@ -16,8 +24,9 @@ func _ready():
 	_reset_level()
 	var tnt_chest_lock_area : Area2D = tnt_chest.find_child("LockArea")
 	if tnt_chest_lock_area != null:
-		print("connected")
 		tnt_chest_lock_area.area_entered.connect(on_tnt_chest_lock_area_entered)
+		
+	player.tnt_picked_up.connect(on_tnt_picked_up)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,6 +39,15 @@ func _process(delta):
 		_reset_level()
 		blackout_layer.visible = false
 		reset_performed = true
+		
+	if tnt_ignited:
+		explosion_timer -= delta
+		explosion.global_position = tnt_item.global_position
+		
+	if explosion_timer < 0 && tnt_ignited:
+		explode_tnt()
+		tnt_ignited = false
+	
 	
 func on_npc_reached_player():
 	blackout_timer = 0.0
@@ -42,6 +60,16 @@ func on_tnt_chest_lock_area_entered(area: Area2D):
 		tnt_chest.open()
 		player.return_key()
 		remove_child(key_item)
+		
+func on_tnt_picked_up():
+	tnt_ignited = true
+	tnt_music.play()
+	$Camera2D/ActionMusic.stop()
+	$Camera2D/BackgroundMusic.stop()
+	
+func explode_tnt():
+	tnt_item.explode()
+	explosion.trigger()
 	
 func _reset_level():
 	player.position = $PlayerSpawnPosition.position

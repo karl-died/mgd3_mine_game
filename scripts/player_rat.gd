@@ -1,6 +1,8 @@
 class_name PlayerRat
 extends CharacterBody2D
 
+signal tnt_picked_up
+
 enum player_state {
 	IDLE,
 	RUNNING,
@@ -123,8 +125,7 @@ func on_item_area_entered(item_area: Node2D):
 	
 	match item.name:
 		"TNT_Item":
-			#$ItemSprites/TNTSprite.visible = true
-			pass
+			tnt_picked_up.emit()
 		"Key_Item":
 			$ItemSprites/KeySprite.visible = true
 			key_npc.steal_key()

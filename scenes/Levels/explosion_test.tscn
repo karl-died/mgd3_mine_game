@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://db0umd3whao80"]
+[gd_scene load_steps=60 format=3 uid="uid://c06782hektkfv"]
 
 [ext_resource type="Script" path="res://scripts/explosion_test.gd" id="1_jxx1g"]
 [ext_resource type="PackedScene" uid="uid://dndaw0nqyakur" path="res://scenes/Environment/trapdoor.tscn" id="2_xyoxr"]
@@ -13,7 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://x0me6iw8537u" path="res://music/HardTechnoSpiel1.2.mp3" id="10_b4xmq"]
 [ext_resource type="PackedScene" uid="uid://dokpkx8hr3rn3" path="res://scenes/Player and Enemy/player_rat_new_anim.tscn" id="11_gaers"]
 [ext_resource type="Shader" path="res://scripts/wall_color_correction.gdshader" id="12_cwqhl"]
-[ext_resource type="PackedScene" uid="uid://c83ft1k0g2rnn" path="res://scenes/Environment/explosion.tscn" id="13_bnhbn"]
+[ext_resource type="PackedScene" uid="uid://oqnwaxj4nua3" path="res://scenes/Environment/explosion.tscn" id="13_bnhbn"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_a3uvg"]
 vertices = PackedVector2Array(-128, 64, -128, -128, 64, -128)
