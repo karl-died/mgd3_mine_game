@@ -35,6 +35,7 @@ var has_key = false
 @onready var trap_timer_sprite : AnimatedSprite2D = $TrapTimerSprite
 @onready var item_pickup_area : Area2D = $ItemPickupArea
 @onready var item_indicator_area : Area2D = $ItemIndicatorArea
+@onready var collision_shape : CollisionShape2D = $CollisionShape2D
 
 @onready var current_item : Item = null
 
@@ -105,6 +106,7 @@ func _physics_process(delta):
 	
 
 func on_trap_entered(trap_position: Vector2):
+	print("aaaa")
 	if invincibility_timer <= 0:
 		state = player_state.TRAPPED
 		trap_timer = trap_duration

@@ -3,12 +3,13 @@ extends Node2D
 @export var blackout_duration : float = 3.0
 
 @onready var player : PlayerRat = $PlayerRat
-@onready var blackout_layer : ColorRect = $Camera2D/CanvasLayer2/Blackout
+@onready var blackout_layer : CanvasLayer = $Camera2D/CanvasLayer2
 @onready var npc : CharacterBody2D = $NPC
 @onready var explosion : Explosion = $Explosion
 @onready var tnt_chest : TNT_Chest = $TNT_Chest
 @onready var key_item : Key_Item = $Key_Item
 @onready var tnt_item : TNT_Item = $TNT_Item
+@onready var locked_door_collision_area : Node2D = $LockedDoor/DestructionArea
 
 
 var explosion_timer = 11.5
@@ -70,6 +71,11 @@ func on_tnt_picked_up():
 func explode_tnt():
 	tnt_item.explode()
 	explosion.trigger()
+	if tnt_item.destruction_area.overlaps_body(player):
+		blackout_timer = 0
+	if tnt_item.destruction_area.overlaps_area(locked_door_collision_area):
+		remove_child($LockedDoor)
+		remove_child($DestructibleWall)
 	
 func _reset_level():
 	player.position = $PlayerSpawnPosition.position

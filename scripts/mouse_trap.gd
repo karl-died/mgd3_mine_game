@@ -21,6 +21,7 @@ func _process(delta):
 	pass
 
 func _on_player_entered(body: Node2D):
+	print("e")
 	if (body == player && is_active):
 		player.on_trap_entered(area.global_position)
 		$ClosedSprite.visible = true

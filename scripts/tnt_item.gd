@@ -3,6 +3,7 @@ class_name TNT_Item
 extends Item
 
 @onready var collision_area : Area2D = $CollisionArea
+@onready var destruction_area : Area2D = $DestructionArea
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
