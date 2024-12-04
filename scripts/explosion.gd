@@ -14,7 +14,7 @@ extends Node2D
 var current_flash_intensity = 0.0
 var max_flash_intensity = 10.0
 
-var current_shockwave_radius = 0.0
+var current_shockwave_radius = 100.0
 var current_shockwave_intensity = 0.0
 
 

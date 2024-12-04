@@ -80,6 +80,7 @@ func explode_tnt():
 func _reset_level():
 	player.position = $PlayerSpawnPosition.position
 	player.return_key()
+	player.rotation_degrees = 90
 	npc.return_key()
 	$Camera2D/BackgroundMusic.play()
 
