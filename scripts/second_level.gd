@@ -10,6 +10,7 @@ extends Node2D
 @onready var key_item : Key_Item = $Key_Item
 @onready var tnt_item : TNT_Item = $TNT_Item
 @onready var locked_door : Node2D = $LockedDoor
+@onready var success_area : Area2D = $SuccessArea
 
 
 var explosion_timer = 11.5
@@ -32,6 +33,7 @@ func _ready():
 	player.tnt_picked_up.connect(on_tnt_picked_up)
 	$LockedDoorKeyHint.visible = false
 	$LockedDoor/LockArea.body_entered.connect(on_locked_door_body_entered)
+	success_area.body_entered.connect(on_success_area_body_entered)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -81,14 +83,23 @@ func explode_tnt():
 	explosion.trigger()
 	if tnt_item.destruction_area.overlaps_body(player):
 		blackout_timer = 0
+		$Camera2D/TextCanvasLayer/YouDiedLabel.visible = true
 	elif tnt_item.destruction_area.overlaps_area($LockedDoor/DestructionArea):
 		remove_child($LockedDoor)
 		remove_child($DestructibleWall)
+	else:
+		blackout_timer = 0
+		$Camera2D/TextCanvasLayer/MissionFailedLabel.visible = true
 		
 func on_locked_door_body_entered(body: Node2D):
 	if body == player && player.has_key:
 		$LockedDoorKeyHint.visible = true
 		locked_door_hint_timer = 3.0
+		
+func on_success_area_body_entered(body: Node2D):
+	if body == player:
+		blackout_timer = 0
+		$Camera2D/TextCanvasLayer/GoodJobLabel.visible = true
 	
 func _reset_level():
 	player.position = $PlayerSpawnPosition.position
@@ -96,5 +107,7 @@ func _reset_level():
 	player.rotation_degrees = 90
 	npc.return_key()
 	$Camera2D/BackgroundMusic.play()
+	for label in $Camera2D/TextCanvasLayer.get_children():
+		label.visible = false
 
 	
