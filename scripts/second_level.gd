@@ -9,11 +9,13 @@ extends Node2D
 @onready var tnt_chest : TNT_Chest = $TNT_Chest
 @onready var key_item : Key_Item = $Key_Item
 @onready var tnt_item : TNT_Item = $TNT_Item
-@onready var locked_door_collision_area : Node2D = $LockedDoor/DestructionArea
+@onready var locked_door : Node2D = $LockedDoor
 
 
 var explosion_timer = 11.5
 var tnt_ignited = false
+
+var locked_door_hint_timer = 0
 
 @onready var tnt_music : AudioStreamPlayer2D = $Camera2D/TNTMusic
 
@@ -28,6 +30,8 @@ func _ready():
 		tnt_chest_lock_area.area_entered.connect(on_tnt_chest_lock_area_entered)
 		
 	player.tnt_picked_up.connect(on_tnt_picked_up)
+	$LockedDoorKeyHint.visible = false
+	$LockedDoor/LockArea.body_entered.connect(on_locked_door_body_entered)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,8 +52,12 @@ func _process(delta):
 	if explosion_timer < 0 && tnt_ignited:
 		explode_tnt()
 		tnt_ignited = false
-	
-	
+		
+	if locked_door_hint_timer > 0:
+		locked_door_hint_timer -= delta
+	else:
+		$LockedDoorKeyHint.visible = false
+		
 func on_npc_reached_player():
 	blackout_timer = 0.0
 	player.position = $PlayerSpawnPosition.position
@@ -73,9 +81,14 @@ func explode_tnt():
 	explosion.trigger()
 	if tnt_item.destruction_area.overlaps_body(player):
 		blackout_timer = 0
-	if tnt_item.destruction_area.overlaps_area(locked_door_collision_area):
+	elif tnt_item.destruction_area.overlaps_area($LockedDoor/DestructionArea):
 		remove_child($LockedDoor)
 		remove_child($DestructibleWall)
+		
+func on_locked_door_body_entered(body: Node2D):
+	if body == player && player.has_key:
+		$LockedDoorKeyHint.visible = true
+		locked_door_hint_timer = 3.0
 	
 func _reset_level():
 	player.position = $PlayerSpawnPosition.position
