@@ -21,11 +21,12 @@ var locked_door_hint_timer = 0
 @onready var tnt_music : AudioStreamPlayer2D = $Camera2D/TNTMusic
 
 var blackout_timer = blackout_duration
-var reset_performed = false
+var reset_performed = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_reset_level()
+	blackout_layer.visible = false
 	var tnt_chest_lock_area : Area2D = tnt_chest.find_child("LockArea")
 	if tnt_chest_lock_area != null:
 		tnt_chest_lock_area.area_entered.connect(on_tnt_chest_lock_area_entered)
@@ -43,7 +44,8 @@ func _process(delta):
 		blackout_timer += delta
 		blackout_layer.visible = true
 	elif !reset_performed:
-		_reset_level()
+		get_tree().reload_current_scene()
+		#_reset_level()
 		blackout_layer.visible = false
 		reset_performed = true
 		
