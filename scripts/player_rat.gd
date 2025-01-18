@@ -36,6 +36,7 @@ var has_key = false
 @onready var item_pickup_area : Area2D = $ItemPickupArea
 @onready var item_indicator_area : Area2D = $ItemIndicatorArea
 @onready var collision_shape : CollisionShape2D = $CollisionShape2D
+@onready var audio_player : AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @onready var current_item : Item = null
 
@@ -46,6 +47,7 @@ func _ready():
 	item_pickup_area.area_entered.connect(on_item_area_entered)
 	item_indicator_area.area_entered.connect(on_item_indicator_area_entered)
 	item_indicator_area.area_exited.connect(on_item_indicator_area_exited)
+	audio_player.finished.connect((audio_player.play))
 
 
 func _physics_process(delta):
@@ -104,6 +106,13 @@ func _physics_process(delta):
 	dash_recovery_timer_sprite.set_value(dash_recovery_timer)
 	trap_timer_sprite.set_value(trap_timer)
 	
+	if current_item != null:
+		
+		if current_item.name == "Key_Item":
+			key_sprite.visible = true
+		else:
+			key_sprite.visible = false
+	
 
 func on_trap_entered(trap_position: Vector2):
 	print("aaaa")
@@ -129,7 +138,6 @@ func on_item_area_entered(item_area: Node2D):
 		"TNT_Item":
 			tnt_picked_up.emit()
 		"Key_Item":
-			$ItemSprites/KeySprite.visible = true
 			key_npc.steal_key()
 			
 			

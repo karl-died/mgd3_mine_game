@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://dr8b8xfawcjs4"]
+[gd_scene load_steps=73 format=3 uid="uid://dr8b8xfawcjs4"]
 
 [ext_resource type="Script" path="res://scripts/second_level.gd" id="1_ha6qf"]
 [ext_resource type="PackedScene" uid="uid://dndaw0nqyakur" path="res://scenes/Environment/trapdoor.tscn" id="2_elbs2"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://0yo6b2mipj4x" path="res://music/TickingTechnos.mp3" id="11_dce5b"]
 [ext_resource type="Shader" path="res://scripts/wall_color_correction.gdshader" id="12_1yep6"]
 [ext_resource type="PackedScene" uid="uid://bqs4hpkmk22cw" path="res://scenes/Levels/test_npc.tscn" id="13_b67g1"]
+[ext_resource type="AudioStream" uid="uid://x2jv3xq5ni5o" path="res://music/sounds/soundscape_02.wav" id="13_mq8tr"]
 [ext_resource type="PackedScene" uid="uid://dkxwkuhp7bqhp" path="res://scenes/Environment/lamp.tscn" id="14_1orb4"]
 [ext_resource type="PackedScene" uid="uid://bdaj8nk3swe0f" path="res://scenes/Environment/mouse_trap.tscn" id="16_l5etc"]
 [ext_resource type="PackedScene" uid="uid://ckocvqggld74o" path="res://scenes/Items/tnt_item.tscn" id="17_kxqep"]
@@ -380,7 +381,7 @@ layer_0/tile_data = PackedInt32Array(-65520, 0, 2, 16, 0, 3, 65552, 0, 2, 131088
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 color = Color(1, 0.87451, 0.854902, 1)
-energy = 0.4
+energy = 0.25
 blend_mode = 1
 
 [node name="Lighting" type="Node2D" parent="."]
@@ -667,6 +668,11 @@ stream = ExtResource("10_3lt7w")
 [node name="TNTMusic" type="AudioStreamPlayer2D" parent="Camera2D"]
 stream = ExtResource("11_dce5b")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Camera2D"]
+stream = ExtResource("13_mq8tr")
+volume_db = -8.09
+autoplay = true
+
 [node name="PlayerRat" parent="." node_paths=PackedStringArray("key_npc") groups=["Player"] instance=ExtResource("11_1ga0d")]
 modulate = Color(0.625597, 0.625597, 0.625597, 1)
 z_index = 2
@@ -754,6 +760,7 @@ rotation = -0.470849
 scale = Vector2(6, 6)
 
 [node name="Key_Item" parent="." groups=["Item"] instance=ExtResource("17_mgx54")]
+z_index = 3
 position = Vector2(712, 249)
 scale = Vector2(8, 8)
 

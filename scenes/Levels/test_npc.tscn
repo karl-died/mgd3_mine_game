@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://ber40nn1ly152" path="res://assets/schlusselminer.png" id="3_sam0g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ynup"]
-radius = 20.0
-height = 126.532
+radius = 777.603
+height = 2799.4
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qccrx"]
 atlas = ExtResource("2_qpysu")
@@ -98,6 +98,7 @@ collision_mask = 9
 script = ExtResource("1_r7xlq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-22.0002, -51.9999)
 rotation = 3.1442
 scale = Vector2(0.272652, 0.252901)
 shape = SubResource("CapsuleShape2D_7ynup")

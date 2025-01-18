@@ -35,6 +35,7 @@ func _ready():
 	$LockedDoorKeyHint.visible = false
 	$LockedDoor/LockArea.body_entered.connect(on_locked_door_body_entered)
 	success_area.body_entered.connect(on_success_area_body_entered)
+	#$NPC.body_entered.connect(on_npc_hitbox_entered)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -75,8 +76,9 @@ func on_tnt_chest_lock_area_entered(area: Area2D):
 		remove_child(key_item)
 		
 func on_tnt_picked_up():
+	if tnt_ignited == false:
+		tnt_music.play()
 	tnt_ignited = true
-	tnt_music.play()
 	$Camera2D/ActionMusic.stop()
 	$Camera2D/BackgroundMusic.stop()
 	
@@ -102,6 +104,11 @@ func on_success_area_body_entered(body: Node2D):
 	if body == player:
 		blackout_timer = 0
 		$Camera2D/TextCanvasLayer/GoodJobLabel.visible = true
+		
+func on_npc_hitbox_entered(body: Node2D):
+	if body == player:
+		blackout_timer = 0
+		$Camera2D/TextCanvasLayer/YouDiedLabel.visible = true
 	
 func _reset_level():
 	player.position = $PlayerSpawnPosition.position
