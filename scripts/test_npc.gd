@@ -16,6 +16,7 @@ signal chase_ended
 @onready var key_sprite = $KeySprite
 @onready var nav_agent = $NavigationAgent2D
 @onready var item_pickup_area : Area2D = $ItemPickupArea
+@onready var key_audio_player : AudioStreamPlayer2D = $KeyAudioStreamPlayer
 
 # stats
 var walking_speed : float = 350
@@ -62,6 +63,12 @@ func _physics_process(delta):
 	var animation_speed_scale = 0.5 + 0.001 * velocity.length()
 	anim.speed_scale = animation_speed_scale
 	key_sprite.speed_scale = animation_speed_scale
+	
+	if key_sprite.visible:
+		if key_audio_player.playing == false:
+			key_audio_player.play()
+	else: 
+		key_audio_player.stop()
 	
 	move_and_slide()
 

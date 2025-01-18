@@ -661,17 +661,21 @@ scale = Vector2(12.6896, 7.46736)
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="Camera2D"]
 stream = ExtResource("9_37pdd")
 autoplay = true
+bus = &"Music"
 
 [node name="ActionMusic" type="AudioStreamPlayer2D" parent="Camera2D"]
 stream = ExtResource("10_3lt7w")
+bus = &"Music"
 
 [node name="TNTMusic" type="AudioStreamPlayer2D" parent="Camera2D"]
 stream = ExtResource("11_dce5b")
+bus = &"Music"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Camera2D"]
 stream = ExtResource("13_mq8tr")
 volume_db = -8.09
 autoplay = true
+bus = &"Background"
 
 [node name="PlayerRat" parent="." node_paths=PackedStringArray("key_npc") groups=["Player"] instance=ExtResource("11_1ga0d")]
 modulate = Color(0.625597, 0.625597, 0.625597, 1)

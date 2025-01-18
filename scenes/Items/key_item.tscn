@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgclyijh1l4ql"]
+[gd_scene load_steps=8 format=3 uid="uid://dgclyijh1l4ql"]
 
 [ext_resource type="Script" path="res://scripts/key_item.gd" id="1_63oiu"]
 [ext_resource type="Texture2D" uid="uid://de3ljwi5gfk45" path="res://assets/keyratte.png" id="2_tje8c"]
 [ext_resource type="PackedScene" uid="uid://bcuwrnihv8iik" path="res://scenes/Items/item_pickup_indicator.tscn" id="3_crd02"]
+[ext_resource type="AudioStream" uid="uid://b3h2g684c0lyo" path="res://presets/key_steal_audio_stream_randomizer.tres" id="4_1le76"]
+[ext_resource type="AudioStream" uid="uid://bxt4xq776l1cf" path="res://presets/key_drop_audio_stream_randomizer.tres" id="5_omrfa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eg4j2"]
 atlas = ExtResource("2_tje8c")
@@ -10,9 +12,11 @@ region = Rect2(0, 0, 2000, 3000)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_23k7u"]
 
-[node name="Key_Item" type="Node2D"]
+[node name="Key_Item" type="Node2D" node_paths=PackedStringArray("pick_up_sound", "drop_sound")]
 modulate = Color(0.627451, 0.627451, 0.627451, 1)
 script = ExtResource("1_63oiu")
+pick_up_sound = NodePath("PickUpAudioStreamPlayer")
+drop_sound = NodePath("DropAudioStreamPlayer")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -31,3 +35,13 @@ shape = SubResource("CapsuleShape2D_23k7u")
 [node name="ItemPickupIndicator" parent="." groups=["Item"] instance=ExtResource("3_crd02")]
 visible = false
 scale = Vector2(0.25, 0.25)
+
+[node name="PickUpAudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_1le76")
+volume_db = 24.0
+bus = &"FX"
+
+[node name="DropAudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_omrfa")
+volume_db = 24.0
+bus = &"FX"

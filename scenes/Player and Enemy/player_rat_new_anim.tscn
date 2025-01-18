@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dokpkx8hr3rn3"]
+[gd_scene load_steps=39 format=3 uid="uid://dokpkx8hr3rn3"]
 
 [ext_resource type="Script" path="res://scripts/player_rat.gd" id="1_e2vuc"]
 [ext_resource type="Texture2D" uid="uid://dvcd2ovtkxh83" path="res://assets/spritesheet_still.png" id="3_70hcq"]
@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://cjrm84ehengo5" path="res://music/sounds/squeeks/squeek_08.wav" id="15_41767"]
 [ext_resource type="AudioStream" uid="uid://7rnlxd8sdspn" path="res://music/sounds/squeeks/squeek_09.wav" id="16_6h2a6"]
 [ext_resource type="AudioStream" uid="uid://cvbmaqm4semi7" path="res://music/sounds/squeeks/squeek_10.wav" id="17_2jcpd"]
+[ext_resource type="AudioStream" uid="uid://buptsq31we25e" path="res://music/sounds/key/rat_key_run.wav" id="19_wlro1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p67d3"]
 atlas = ExtResource("4_h3wnb")
@@ -229,7 +230,12 @@ scale = Vector2(0.015, 0.015)
 sprite_frames = SubResource("SpriteFrames_cjlpo")
 frame_progress = 0.360296
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="SqueekAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_ph8g3")
 autoplay = true
 bus = &"Rat"
+
+[node name="KeyAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_wlro1")
+volume_db = 8.792
+bus = &"FX"

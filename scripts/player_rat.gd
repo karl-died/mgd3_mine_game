@@ -36,7 +36,10 @@ var has_key = false
 @onready var item_pickup_area : Area2D = $ItemPickupArea
 @onready var item_indicator_area : Area2D = $ItemIndicatorArea
 @onready var collision_shape : CollisionShape2D = $CollisionShape2D
-@onready var audio_player : AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var squeek_audio_player : AudioStreamPlayer2D = $SqueekAudioPlayer
+@onready var key_audio_player : AudioStreamPlayer2D = $KeyAudioPlayer
+@onready var key_steal_audio_player : AudioStreamPlayer2D = $KeyStealAudioPlayer
+@onready var key_drop_audio_player : AudioStreamPlayer2D = $KeyDropAudioPlayer
 
 @onready var current_item : Item = null
 
@@ -47,7 +50,7 @@ func _ready():
 	item_pickup_area.area_entered.connect(on_item_area_entered)
 	item_indicator_area.area_entered.connect(on_item_indicator_area_entered)
 	item_indicator_area.area_exited.connect(on_item_indicator_area_exited)
-	audio_player.finished.connect((audio_player.play))
+	squeek_audio_player.finished.connect(squeek_audio_player.play)
 
 
 func _physics_process(delta):
@@ -68,6 +71,8 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("drop"):
 		drop_item()
+		
+		
 	
 	match state:
 		player_state.TRAPPED:
@@ -90,6 +95,7 @@ func _physics_process(delta):
 				#anim.material.set("shader_parameter/rotadtion", -look_direction.angle())
 				anim.play("run")
 				key_sprite.play("default")
+					
 			else:
 				anim.play("default")
 				key_sprite.stop()
@@ -106,13 +112,33 @@ func _physics_process(delta):
 	dash_recovery_timer_sprite.set_value(dash_recovery_timer)
 	trap_timer_sprite.set_value(trap_timer)
 	
-	if current_item != null:
-		
-		if current_item.name == "Key_Item":
+	if current_item == null:
+		key_audio_player.stop()
+	elif current_item.name == "Key_Item":
 			key_sprite.visible = true
-		else:
-			key_sprite.visible = false
+			if move_direction.length() > 0.1:
+				if key_audio_player.playing == false:
+					key_audio_player.play()
+			else:
+				key_audio_player.stop()
+	else:
+		key_sprite.visible = false
+		key_audio_player.stop()
 	
+	
+	#if current_item != null:
+#		if current_item.name == "Key_Item":
+#			key_sprite.visible = true
+#			if move_direction.length() > 0.1:
+#				if key_audio_player.playing == false:
+#					key_audio_player.play()
+#			else:
+#				key_audio_player.stop()
+#		else:
+#			key_sprite.visible = false
+#			key_audio_player.stop()
+#	else:
+#		key_audio_player.stop()
 
 func on_trap_entered(trap_position: Vector2):
 	print("aaaa")
@@ -139,6 +165,7 @@ func on_item_area_entered(item_area: Node2D):
 			tnt_picked_up.emit()
 		"Key_Item":
 			key_npc.steal_key()
+			
 			
 			
 func on_item_indicator_area_entered(item_area: Node2D):

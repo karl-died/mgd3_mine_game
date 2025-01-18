@@ -1,0 +1,9 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://b3h2g684c0lyo"]
+
+[ext_resource type="AudioStream" uid="uid://d314ly2omy4o" path="res://music/sounds/key/key_snatch_01.wav" id="1_f73ph"]
+[ext_resource type="AudioStream" uid="uid://cwyqk45gparcc" path="res://music/sounds/key/key_snatch_02.wav" id="2_8jqyw"]
+
+[resource]
+streams_count = 2
+stream_0/stream = ExtResource("1_f73ph")
+stream_1/stream = ExtResource("2_8jqyw")
