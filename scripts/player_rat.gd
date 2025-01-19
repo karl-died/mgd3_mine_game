@@ -146,11 +146,13 @@ func on_item_area_entered(item_area: Node2D):
 		
 	current_item = item
 	
+	
 	match item.name:
 		"TNT_Item":
 			tnt_picked_up.emit()
 		"Key_Item":
-			key_npc.steal_key()
+			if (key_npc != null):
+				key_npc.steal_key()
 			
 			
 			

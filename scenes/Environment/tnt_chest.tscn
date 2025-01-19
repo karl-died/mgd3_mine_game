@@ -1,21 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1bcfxkak7vml"]
+[gd_scene load_steps=9 format=3 uid="uid://c1bcfxkak7vml"]
 
 [ext_resource type="Script" path="res://scripts/tnt_chest.gd" id="1_8ifr7"]
-[ext_resource type="Texture2D" uid="uid://crrb2jv20ssft" path="res://assets/tnt_chest.png" id="1_grssb"]
+[ext_resource type="Texture2D" uid="uid://cfhlpm5y46p2u" path="res://assets/Tnt_chest.png" id="2_gaqs7"]
+[ext_resource type="Texture2D" uid="uid://c6aywrxnnrt6c" path="res://assets/Tnt_chest_offen.png" id="3_5i4fi"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6o1p8"]
-atlas = ExtResource("1_grssb")
-region = Rect2(64, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmhre"]
+atlas = ExtResource("2_gaqs7")
+region = Rect2(0, 0, 500, 500)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1w3wj"]
-atlas = ExtResource("1_grssb")
-region = Rect2(0, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndclv"]
+atlas = ExtResource("3_5i4fi")
+region = Rect2(0, 0, 500, 500)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g1xka"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6o1p8")
+"texture": SubResource("AtlasTexture_tmhre")
 }],
 "loop": true,
 "name": &"closed",
@@ -23,7 +24,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1w3wj")
+"texture": SubResource("AtlasTexture_ndclv")
 }],
 "loop": true,
 "name": &"open",
@@ -34,6 +35,7 @@ animations = [{
 radius = 3.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uo3af"]
+size = Vector2(20, 18.1308)
 
 [node name="TNT_Chest" type="Node2D"]
 modulate = Color(0.627451, 0.627451, 0.627451, 1)
@@ -43,8 +45,10 @@ script = ExtResource("1_8ifr7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+position = Vector2(0.583333, -2.91667)
+scale = Vector2(0.0826667, 0.0826667)
 sprite_frames = SubResource("SpriteFrames_g1xka")
-animation = &"closed"
+animation = &"open"
 
 [node name="LockArea" type="Area2D" parent="."]
 position = Vector2(-15, 0)
@@ -57,6 +61,6 @@ shape = SubResource("CircleShape2D_dw63e")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1, -1)
+position = Vector2(1, -2.99243)
 scale = Vector2(1.0651, 2.13182)
 shape = SubResource("RectangleShape2D_uo3af")

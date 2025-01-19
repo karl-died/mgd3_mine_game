@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ckocvqggld74o"]
 
 [ext_resource type="Script" path="res://scripts/tnt_item.gd" id="1_5vguq"]
-[ext_resource type="Texture2D" uid="uid://bcqy6qd87a3l" path="res://assets/pixel_tnt.png" id="1_to6k3"]
+[ext_resource type="Texture2D" uid="uid://bg3d757lldc6v" path="res://assets/tnt.png" id="2_3xwmr"]
 [ext_resource type="PackedScene" uid="uid://bcuwrnihv8iik" path="res://scenes/Items/item_pickup_indicator.tscn" id="3_o3ral"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_23k7u"]
@@ -17,7 +17,8 @@ script = ExtResource("1_5vguq")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_to6k3")
+scale = Vector2(0.0386886, 0.0386886)
+texture = ExtResource("2_3xwmr")
 
 [node name="CollisionArea" type="Area2D" parent="."]
 collision_layer = 9
@@ -25,6 +26,7 @@ collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
 position = Vector2(0, 1)
+scale = Vector2(1.24553, 1.32346)
 shape = SubResource("CapsuleShape2D_23k7u")
 
 [node name="ItemPickupIndicator" parent="." groups=["Item"] instance=ExtResource("3_o3ral")]
