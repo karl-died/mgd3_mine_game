@@ -19,3 +19,9 @@ func _on_keyhole_area_entered(area: Area2D) -> void:
 	$LockedDoor/DoorClosed.visible = false
 	$LockedDoor/DoorOpened.visible = true
 	remove_child($DestructibleWall)
+	player.return_key()
+	remove_child($Key_Item)
+
+
+func _on_trapdoor_body_entered(body: Node2D) -> void:
+	get_tree().change_scene_to_file("res://scenes/Levels/second_level.tscn")

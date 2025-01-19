@@ -194,3 +194,5 @@ func steal_key():
 func return_key():
 	key_sprite.visible = false
 	has_key = false
+	print("returned key")
+	current_item = null

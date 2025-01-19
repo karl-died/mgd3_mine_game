@@ -356,7 +356,7 @@ default_font_size = 50
 [sub_resource type="CircleShape2D" id="CircleShape2D_w87n7"]
 radius = 636.84
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 script = ExtResource("1_ha6qf")
 
 [node name="Trapdoor" parent="." instance=ExtResource("2_elbs2")]

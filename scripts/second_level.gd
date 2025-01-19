@@ -102,7 +102,7 @@ func on_locked_door_body_entered(body: Node2D):
 		
 func on_success_area_body_entered(body: Node2D):
 	if body == player:
-		blackout_timer = 0
+		#blackout_timer = 0
 		$Camera2D/TextCanvasLayer/GoodJobLabel.visible = true
 		
 func on_npc_hitbox_entered(body: Node2D):

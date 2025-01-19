@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfvjkryaqv3hf"]
+
+[ext_resource type="FontFile" uid="uid://cp37g0wstna5g" path="res://assets/Fonts/Bahianita-Regular.ttf" id="1_gf7qt"]
+[ext_resource type="Script" path="res://good_job_label.gd" id="2_upa0y"]
+
+[sub_resource type="Gradient" id="Gradient_5mnc3"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_buigs"]
+gradient = SubResource("Gradient_5mnc3")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -127.0
+offset_top = -90.0
+offset_right = -63.0
+offset_bottom = -26.0
+scale = Vector2(36.0507, 21.9783)
+texture = SubResource("GradientTexture2D_buigs")
+
+[node name="GoodJobLabel" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 129.0
+offset_top = 136.0
+offset_right = 1871.0
+offset_bottom = 954.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_gf7qt")
+theme_override_font_sizes/normal_font_size = 90
+text = "Well done Ratthew. 
+You have progressed as far as possible at the current time.
+
+This shall suffice. For now..
+
+
+										- press a to play again -"
+scroll_active = false
+script = ExtResource("2_upa0y")

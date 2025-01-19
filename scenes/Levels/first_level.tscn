@@ -611,5 +611,6 @@ tile_set = ExtResource("6_7fulk")
 format = 2
 layer_0/tile_data = PackedInt32Array(-65520, 0, 2, 16, 0, 3, 65552, 0, 2, 131088, 0, 3, 196624, 65536, 0, -131056, 0, 2, -65519, 196608, 2, 65553, 196608, 2, 131089, 196608, 3, 17, 196608, 3, -131055, 131072, 5, 196625, 131072, 0)
 
+[connection signal="body_entered" from="Trapdoor" to="." method="_on_trapdoor_body_entered"]
 [connection signal="body_entered" from="Trapdoor" to="PlayerRat" method="_on_trapdoor_body_entered"]
 [connection signal="area_entered" from="Keyhole" to="." method="_on_keyhole_area_entered"]
