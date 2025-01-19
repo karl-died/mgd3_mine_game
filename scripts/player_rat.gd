@@ -124,21 +124,7 @@ func _physics_process(delta):
 	else:
 		key_sprite.visible = false
 		key_audio_player.stop()
-	
-	
-	#if current_item != null:
-#		if current_item.name == "Key_Item":
-#			key_sprite.visible = true
-#			if move_direction.length() > 0.1:
-#				if key_audio_player.playing == false:
-#					key_audio_player.play()
-#			else:
-#				key_audio_player.stop()
-#		else:
-#			key_sprite.visible = false
-#			key_audio_player.stop()
-#	else:
-#		key_audio_player.stop()
+
 
 func on_trap_entered(trap_position: Vector2):
 	print("aaaa")

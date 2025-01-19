@@ -17,6 +17,7 @@ signal chase_ended
 @onready var nav_agent = $NavigationAgent2D
 @onready var item_pickup_area : Area2D = $ItemPickupArea
 @onready var key_audio_player : AudioStreamPlayer2D = $KeyAudioStreamPlayer
+@onready var footstep_audio_player : AudioStreamPlayer2D = $FootstepAudioStreamPlayer
 
 # stats
 var walking_speed : float = 350
@@ -33,6 +34,9 @@ var target_position: Vector2
 var chase = false
 var has_vision_of_rat = false
 var chase_timer = Timer.new()
+
+const footstep_interval_sec = 0.5
+var footstep_timer = footstep_interval_sec
 
 var key_item = null
 
@@ -63,13 +67,18 @@ func _physics_process(delta):
 	var animation_speed_scale = 0.5 + 0.001 * velocity.length()
 	anim.speed_scale = animation_speed_scale
 	key_sprite.speed_scale = animation_speed_scale
-	
+	anim.get
 	if key_sprite.visible:
 		if key_audio_player.playing == false:
 			key_audio_player.play()
 	else: 
 		key_audio_player.stop()
+		
+	if footstep_timer < 0:
+		footstep_timer = footstep_interval_sec * animation_speed_scale
+		footstep_audio_player.play()
 	
+	footstep_timer -= delta
 	move_and_slide()
 
 func _on_navigation_agent_2d_target_reached():
