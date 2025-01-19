@@ -773,6 +773,7 @@ position = Vector2(1030, -3607)
 rotation = -0.733331
 
 [node name="LockedDoor" parent="." instance=ExtResource("19_uyisx")]
+modulate = Color(0.458405, 0.458405, 0.458405, 1)
 position = Vector2(4184, 161)
 rotation = 1.5708
 

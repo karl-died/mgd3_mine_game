@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dokpkx8hr3rn3"]
+[gd_scene load_steps=46 format=3 uid="uid://dokpkx8hr3rn3"]
 
 [ext_resource type="Script" path="res://scripts/player_rat.gd" id="1_e2vuc"]
 [ext_resource type="Texture2D" uid="uid://dvcd2ovtkxh83" path="res://assets/spritesheet_still.png" id="3_70hcq"]
@@ -19,6 +19,12 @@
 [ext_resource type="AudioStream" uid="uid://7rnlxd8sdspn" path="res://music/sounds/squeeks/squeek_09.wav" id="16_6h2a6"]
 [ext_resource type="AudioStream" uid="uid://cvbmaqm4semi7" path="res://music/sounds/squeeks/squeek_10.wav" id="17_2jcpd"]
 [ext_resource type="AudioStream" uid="uid://buptsq31we25e" path="res://music/sounds/key/rat_key_run.wav" id="19_wlro1"]
+[ext_resource type="AudioStream" uid="uid://bb7fpu5lo6c5x" path="res://music/sounds/footsteps/rat_footstep_01.wav" id="20_8ju4x"]
+[ext_resource type="AudioStream" uid="uid://ca7s4phxm4yl8" path="res://music/sounds/footsteps/rat_footstep_02.wav" id="21_evhpx"]
+[ext_resource type="AudioStream" uid="uid://c8wnnjaw12fjm" path="res://music/sounds/footsteps/rat_footstep_03.wav" id="22_tl5fc"]
+[ext_resource type="AudioStream" uid="uid://c3f8lgnt170kr" path="res://music/sounds/footsteps/rat_footstep_04.wav" id="23_811nc"]
+[ext_resource type="AudioStream" uid="uid://33m46ik52ea0" path="res://music/sounds/footsteps/rat_footstep_05.wav" id="24_vqxp3"]
+[ext_resource type="AudioStream" uid="uid://xulhuu8nuptb" path="res://music/sounds/footsteps/rat_footstep_06.wav" id="25_xv466"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p67d3"]
 atlas = ExtResource("4_h3wnb")
@@ -165,6 +171,15 @@ stream_10/stream = ExtResource("9_d6v4c")
 stream_11/stream = ExtResource("10_ldc3q")
 stream_11/weight = 93.31
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0dbvf"]
+streams_count = 6
+stream_0/stream = ExtResource("20_8ju4x")
+stream_1/stream = ExtResource("21_evhpx")
+stream_2/stream = ExtResource("22_tl5fc")
+stream_3/stream = ExtResource("23_811nc")
+stream_4/stream = ExtResource("24_vqxp3")
+stream_5/stream = ExtResource("25_xv466")
+
 [node name="PlayerRat" type="CharacterBody2D"]
 position = Vector2(-51, -17)
 script = ExtResource("1_e2vuc")
@@ -239,3 +254,6 @@ bus = &"Rat"
 stream = ExtResource("19_wlro1")
 volume_db = 8.792
 bus = &"FX"
+
+[node name="FootstepAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_0dbvf")
