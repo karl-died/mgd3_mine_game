@@ -29,6 +29,9 @@ var trap_timer = 0.0
 var invincibility_timer = -0.1
 var has_key = false
 
+const step_interval_s = 0.1
+var step_timer = step_interval_s
+
 @onready var anim : AnimatedSprite2D = $AnimatedSprite2D
 @onready var key_sprite : AnimatedSprite2D = $ItemSprites/KeySprite
 @onready var dash_recovery_timer_sprite : AnimatedSprite2D = $DashTimerSprite
@@ -40,6 +43,7 @@ var has_key = false
 @onready var key_audio_player : AudioStreamPlayer2D = $KeyAudioPlayer
 @onready var key_steal_audio_player : AudioStreamPlayer2D = $KeyStealAudioPlayer
 @onready var key_drop_audio_player : AudioStreamPlayer2D = $KeyDropAudioPlayer
+@onready var footstep_audio_player : AudioStreamPlayer2D = $FootstepAudioPlayer
 
 @onready var current_item : Item = null
 
@@ -95,10 +99,15 @@ func _physics_process(delta):
 				#anim.material.set("shader_parameter/rotadtion", -look_direction.angle())
 				anim.play("run")
 				key_sprite.play("default")
-					
+				
+				step_timer -= 0.5 * delta + 0.5 * delta * move_direction.length()
+				if step_timer < 0:
+					footstep_audio_player.play()
+					step_timer = step_interval_s
 			else:
 				anim.play("default")
 				key_sprite.stop()
+				step_timer = 0
 				
 			rotation_degrees = (look_direction.angle() / PI) * 180
 			velocity = move_direction * speed
