@@ -669,9 +669,9 @@ theme_override_font_sizes/font_size = 151
 text = "Approach items to pick them up..."
 
 [node name="UnlockAudioPlayer" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(4216, 240)
+position = Vector2(4218, 240)
 stream = ExtResource("21_3evki")
-volume_db = 4.52
+volume_db = 11.158
 bus = &"FX"
 
 [connection signal="body_entered" from="Trapdoor" to="." method="_on_trapdoor_body_entered"]
