@@ -21,12 +21,12 @@ func _process(_delta):
 	pass
 
 func _on_player_entered(body: Node2D):
-	print("e")
 	if (body == player && is_active):
 		player.on_trap_entered(area.global_position)
 		$ClosedSprite.visible = true
 		$LatchSprite.visible = true
 		is_active = false
+		$AudioStreamPlayer2D.play()
 
 func _on_player_exited(body: Node2D):
 	if (body == player):

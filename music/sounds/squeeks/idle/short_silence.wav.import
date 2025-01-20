@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b2di7vejy3nw0"
-path="res://.godot/imported/short_silence.wav-40ddc7c7ec57781929aef54492e4ca26.sample"
+path="res://.godot/imported/short_silence.wav-eb287b4372a9f65905d494e638799bd5.sample"
 
 [deps]
 
-source_file="res://music/sounds/squeeks/short_silence.wav"
-dest_files=["res://.godot/imported/short_silence.wav-40ddc7c7ec57781929aef54492e4ca26.sample"]
+source_file="res://music/sounds/squeeks/idle/short_silence.wav"
+dest_files=["res://.godot/imported/short_silence.wav-eb287b4372a9f65905d494e638799bd5.sample"]
 
 [params]
 

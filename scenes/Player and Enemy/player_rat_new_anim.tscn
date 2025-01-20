@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dokpkx8hr3rn3"]
+[gd_scene load_steps=55 format=3 uid="uid://dokpkx8hr3rn3"]
 
 [ext_resource type="Script" path="res://scripts/player_rat.gd" id="1_e2vuc"]
 [ext_resource type="Texture2D" uid="uid://dvcd2ovtkxh83" path="res://assets/spritesheet_still.png" id="3_70hcq"]
@@ -6,18 +6,18 @@
 [ext_resource type="Texture2D" uid="uid://de3ljwi5gfk45" path="res://assets/keyratte.png" id="4_hplgk"]
 [ext_resource type="PackedScene" uid="uid://caivn8sx3wmgf" path="res://scenes/UI/timer_sprite.tscn" id="5_vhi0k"]
 [ext_resource type="Texture2D" uid="uid://bcqy6qd87a3l" path="res://assets/pixel_tnt.png" id="5_yxcm7"]
-[ext_resource type="AudioStream" uid="uid://do6oeliafhy8r" path="res://music/sounds/squeeks/squeek_01.wav" id="7_o5qat"]
-[ext_resource type="AudioStream" uid="uid://cjll5wou0vk1c" path="res://music/sounds/squeeks/squeek_02.wav" id="8_blcy1"]
-[ext_resource type="AudioStream" uid="uid://diumahnwt2am8" path="res://music/sounds/squeeks/squeek_11.wav" id="9_d6v4c"]
-[ext_resource type="AudioStream" uid="uid://b2di7vejy3nw0" path="res://music/sounds/squeeks/short_silence.wav" id="10_ldc3q"]
-[ext_resource type="AudioStream" uid="uid://bjujd1xc17gpx" path="res://music/sounds/squeeks/squeek_03.wav" id="10_qe8gx"]
-[ext_resource type="AudioStream" uid="uid://cadbc7lhpfye3" path="res://music/sounds/squeeks/squeek_04.wav" id="11_refd6"]
-[ext_resource type="AudioStream" uid="uid://cee6plglcriwf" path="res://music/sounds/squeeks/squeek_05.wav" id="12_uyqga"]
-[ext_resource type="AudioStream" uid="uid://b7f5shnjubnml" path="res://music/sounds/squeeks/squeek_06.wav" id="13_stq6w"]
-[ext_resource type="AudioStream" uid="uid://c406n06f5gin1" path="res://music/sounds/squeeks/squeek_07.wav" id="14_wwm4i"]
-[ext_resource type="AudioStream" uid="uid://cjrm84ehengo5" path="res://music/sounds/squeeks/squeek_08.wav" id="15_41767"]
-[ext_resource type="AudioStream" uid="uid://7rnlxd8sdspn" path="res://music/sounds/squeeks/squeek_09.wav" id="16_6h2a6"]
-[ext_resource type="AudioStream" uid="uid://cvbmaqm4semi7" path="res://music/sounds/squeeks/squeek_10.wav" id="17_2jcpd"]
+[ext_resource type="AudioStream" uid="uid://do6oeliafhy8r" path="res://music/sounds/squeeks/idle/squeek_01.wav" id="7_o5qat"]
+[ext_resource type="AudioStream" uid="uid://cjll5wou0vk1c" path="res://music/sounds/squeeks/idle/squeek_02.wav" id="8_blcy1"]
+[ext_resource type="AudioStream" uid="uid://diumahnwt2am8" path="res://music/sounds/squeeks/idle/squeek_11.wav" id="9_d6v4c"]
+[ext_resource type="AudioStream" uid="uid://b2di7vejy3nw0" path="res://music/sounds/squeeks/idle/short_silence.wav" id="10_ldc3q"]
+[ext_resource type="AudioStream" uid="uid://bjujd1xc17gpx" path="res://music/sounds/squeeks/idle/squeek_03.wav" id="10_qe8gx"]
+[ext_resource type="AudioStream" uid="uid://cadbc7lhpfye3" path="res://music/sounds/squeeks/idle/squeek_04.wav" id="11_refd6"]
+[ext_resource type="AudioStream" uid="uid://cee6plglcriwf" path="res://music/sounds/squeeks/idle/squeek_05.wav" id="12_uyqga"]
+[ext_resource type="AudioStream" uid="uid://b7f5shnjubnml" path="res://music/sounds/squeeks/idle/squeek_06.wav" id="13_stq6w"]
+[ext_resource type="AudioStream" uid="uid://c406n06f5gin1" path="res://music/sounds/squeeks/idle/squeek_07.wav" id="14_wwm4i"]
+[ext_resource type="AudioStream" uid="uid://cjrm84ehengo5" path="res://music/sounds/squeeks/idle/squeek_08.wav" id="15_41767"]
+[ext_resource type="AudioStream" uid="uid://7rnlxd8sdspn" path="res://music/sounds/squeeks/idle/squeek_09.wav" id="16_6h2a6"]
+[ext_resource type="AudioStream" uid="uid://cvbmaqm4semi7" path="res://music/sounds/squeeks/idle/squeek_10.wav" id="17_2jcpd"]
 [ext_resource type="AudioStream" uid="uid://buptsq31we25e" path="res://music/sounds/key/rat_key_run.wav" id="19_wlro1"]
 [ext_resource type="AudioStream" uid="uid://bb7fpu5lo6c5x" path="res://music/sounds/footsteps/rat_footstep_01.wav" id="20_8ju4x"]
 [ext_resource type="AudioStream" uid="uid://ca7s4phxm4yl8" path="res://music/sounds/footsteps/rat_footstep_02.wav" id="21_evhpx"]
@@ -25,6 +25,14 @@
 [ext_resource type="AudioStream" uid="uid://c3f8lgnt170kr" path="res://music/sounds/footsteps/rat_footstep_04.wav" id="23_811nc"]
 [ext_resource type="AudioStream" uid="uid://33m46ik52ea0" path="res://music/sounds/footsteps/rat_footstep_05.wav" id="24_vqxp3"]
 [ext_resource type="AudioStream" uid="uid://xulhuu8nuptb" path="res://music/sounds/footsteps/rat_footstep_06.wav" id="25_xv466"]
+[ext_resource type="AudioStream" uid="uid://c5xxsoie0nqmr" path="res://music/sounds/squeeks/panic/rat_panic_01.wav" id="26_asl87"]
+[ext_resource type="AudioStream" uid="uid://bq1dw8241ckri" path="res://music/sounds/squeeks/panic/rat_panic_02.wav" id="27_ldkhl"]
+[ext_resource type="AudioStream" uid="uid://b73lpu4ywvbu" path="res://music/sounds/squeeks/panic/rat_panic_03.wav" id="28_ts7db"]
+[ext_resource type="AudioStream" uid="uid://dvj1878tq7im7" path="res://music/sounds/squeeks/panic/rat_panic_04.wav" id="29_3vfhw"]
+[ext_resource type="AudioStream" uid="uid://cktnhqqinm61c" path="res://music/sounds/squeeks/panic/rat_panic_05.wav" id="30_x3bpn"]
+[ext_resource type="AudioStream" uid="uid://bxii5715junqp" path="res://music/sounds/squeeks/panic/rat_panic_06.wav" id="31_yds5t"]
+[ext_resource type="AudioStream" uid="uid://c80yr85hemevc" path="res://music/sounds/squeeks/panic/rat_panic_07.wav" id="32_x56uw"]
+[ext_resource type="AudioStream" uid="uid://caf06nb1at2ud" path="res://music/sounds/squeeks/panic/rat_panic_08.wav" id="33_jkmve"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p67d3"]
 atlas = ExtResource("4_h3wnb")
@@ -180,6 +188,17 @@ stream_3/stream = ExtResource("23_811nc")
 stream_4/stream = ExtResource("24_vqxp3")
 stream_5/stream = ExtResource("25_xv466")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pr14d"]
+streams_count = 8
+stream_0/stream = ExtResource("26_asl87")
+stream_1/stream = ExtResource("27_ldkhl")
+stream_2/stream = ExtResource("28_ts7db")
+stream_3/stream = ExtResource("29_3vfhw")
+stream_4/stream = ExtResource("30_x3bpn")
+stream_5/stream = ExtResource("31_yds5t")
+stream_6/stream = ExtResource("32_x56uw")
+stream_7/stream = ExtResource("33_jkmve")
+
 [node name="PlayerRat" type="CharacterBody2D"]
 position = Vector2(-51, -17)
 script = ExtResource("1_e2vuc")
@@ -256,3 +275,8 @@ bus = &"FX"
 
 [node name="FootstepAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_0dbvf")
+
+[node name="PanicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_pr14d")
+volume_db = 7.587
+bus = &"Rat"

@@ -32,6 +32,9 @@ var has_key = false
 const step_interval_s = 0.1
 var step_timer = step_interval_s
 
+const panic_squeek_interval_s = 0.7
+var panic_squeek_timer = 0.0
+
 @onready var anim : AnimatedSprite2D = $AnimatedSprite2D
 @onready var key_sprite : AnimatedSprite2D = $ItemSprites/KeySprite
 @onready var dash_recovery_timer_sprite : AnimatedSprite2D = $DashTimerSprite
@@ -86,10 +89,16 @@ func _physics_process(delta):
 				trap_timer -= trap_spam_bonus
 				trap_timer_sprite.trigger_bump()
 				anim.play("run")
+				
 			else:
 				anim.play("default")
 			if trap_timer < 0:
 				state = player_state.IDLE
+				
+			panic_squeek_timer -= delta
+			if panic_squeek_timer < 0:
+					$PanicAudioPlayer.play()
+					panic_squeek_timer = panic_squeek_interval_s
 				
 		player_state.IDLE, player_state.RUNNING:
 			move_direction = Input.get_vector("left", "right", "up", "down")

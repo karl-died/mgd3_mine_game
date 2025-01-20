@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdaj8nk3swe0f"]
+[gd_scene load_steps=7 format=3 uid="uid://bdaj8nk3swe0f"]
 
 [ext_resource type="Script" path="res://scripts/mouse_trap.gd" id="1_ypbue"]
 [ext_resource type="Texture2D" uid="uid://c5lh7fw6mdkph" path="res://assets/Mouse Trap/mouse_trap_open.png" id="2_76egs"]
 [ext_resource type="Texture2D" uid="uid://becrqh86i1lq0" path="res://assets/Mouse Trap/mouse_trap_closed.png" id="3_u3cfx"]
 [ext_resource type="Texture2D" uid="uid://c5ks0tipx4d21" path="res://assets/Mouse Trap/mouse_trap_latch.png" id="4_ynb2b"]
+[ext_resource type="AudioStream" uid="uid://cdkwdtrnhxtt3" path="res://music/sounds/mousetrap.wav" id="5_0jx4s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_101gx"]
 radius = 1.0
@@ -36,3 +37,8 @@ texture = ExtResource("3_u3cfx")
 z_index = 2
 z_as_relative = false
 texture = ExtResource("4_ynb2b")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_0jx4s")
+volume_db = 6.638
+bus = &"FX"

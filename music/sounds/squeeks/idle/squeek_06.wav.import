@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b7f5shnjubnml"
-path="res://.godot/imported/squeek_06.wav-cae372c47f27a8174bfa7076e0b16d60.sample"
+path="res://.godot/imported/squeek_06.wav-b05499a5293f61f54c7cf361deb270eb.sample"
 
 [deps]
 
-source_file="res://music/sounds/squeeks/squeek_06.wav"
-dest_files=["res://.godot/imported/squeek_06.wav-cae372c47f27a8174bfa7076e0b16d60.sample"]
+source_file="res://music/sounds/squeeks/idle/squeek_06.wav"
+dest_files=["res://.godot/imported/squeek_06.wav-b05499a5293f61f54c7cf361deb270eb.sample"]
 
 [params]
 
