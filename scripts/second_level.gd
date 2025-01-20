@@ -4,7 +4,7 @@ extends Node2D
 
 @onready var player : PlayerRat = $PlayerRat
 @onready var blackout_layer : CanvasLayer = $Camera2D/CanvasLayer2
-@onready var npc : CharacterBody2D = $NPC
+@onready var npc : CharacterBody2D = $NPC1
 @onready var explosion : Explosion = $Explosion
 @onready var tnt_chest : TNT_Chest = $TNT_Chest
 @onready var key_item : Key_Item = $Key_Item
@@ -12,6 +12,7 @@ extends Node2D
 @onready var locked_door : Node2D = $LockedDoor
 @onready var success_area : Area2D = $SuccessArea
 
+var chest_isOpen = false
 
 var explosion_timer = 11.5
 var tnt_ignited = false
@@ -32,14 +33,14 @@ func _ready():
 		tnt_chest_lock_area.area_entered.connect(on_tnt_chest_lock_area_entered)
 		
 	player.tnt_picked_up.connect(on_tnt_picked_up)
-	$LockedDoorKeyHint.visible = false
+	$LockedDoorKeyHint.visible = true
 	$LockedDoor/LockArea.body_entered.connect(on_locked_door_body_entered)
 	success_area.body_entered.connect(on_success_area_body_entered)
 	#$NPC.body_entered.connect(on_npc_hitbox_entered)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	if blackout_timer < blackout_duration:
 		reset_performed = false
 		blackout_timer += delta
@@ -51,6 +52,7 @@ func _process(delta):
 		reset_performed = true
 		
 	if tnt_ignited:
+		$Camera2D.zoom_out(Vector2(.3, .3))
 		explosion_timer -= delta
 		explosion.global_position = tnt_item.global_position
 		
@@ -72,6 +74,7 @@ func on_tnt_chest_lock_area_entered(area: Area2D):
 	var parent = area.get_parent()
 	if parent.name == "PlayerRat" && area.name == "ItemPickupArea" && player.has_key:
 		tnt_chest.open()
+		chest_isOpen = true
 		player.return_key()
 		remove_child(key_item)
 		
@@ -119,4 +122,6 @@ func _reset_level():
 	for label in $Camera2D/TextCanvasLayer.get_children():
 		label.visible = false
 
-	
+func _on_success_area_body_entered(body: Node2D) -> void:
+	if(body == player):
+		get_tree().change_scene_to_file("res://scenes/Levels/End_scene.tscn")

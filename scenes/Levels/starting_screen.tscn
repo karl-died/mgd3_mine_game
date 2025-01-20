@@ -14,8 +14,9 @@ position = Vector2(2, 3)
 stream = ExtResource("2_etv4c")
 volume_db = -8.09
 autoplay = true
-bus = &"Background"
+bus = &"Music"
 
 [node name="Startscreen" type="Sprite2D" parent="."]
-position = Vector2(2, 3)
+position = Vector2(-15, -8)
+scale = Vector2(1.01759, 1.01759)
 texture = ExtResource("3_tf76h")

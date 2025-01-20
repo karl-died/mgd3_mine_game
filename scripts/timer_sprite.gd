@@ -15,7 +15,7 @@ func _ready():
 	pass # Replace with function body.
 
 
-func _process(delta):
+func _process(_delta):
 	var current_frame = ((duration - value) / duration) * number_of_frames
 	set_frame_and_progress(round(current_frame), 0.0)
 	current_scale = lerp(current_scale, base_scale, 1.0 - bump_decay)

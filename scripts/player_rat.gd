@@ -74,13 +74,14 @@ func _physics_process(delta):
 	invincibility_timer -= delta
 	
 	if Input.is_action_just_pressed("drop"):
+		if (current_item == TNT_Item):
+			print("item was TNT")
 		drop_item()
 		
 		
 	
 	match state:
 		player_state.TRAPPED:
-			trap_timer -= delta
 			if Input.is_action_just_pressed("jump"):
 				trap_timer -= trap_spam_bonus
 				trap_timer_sprite.trigger_bump()
@@ -144,8 +145,9 @@ func on_trap_entered(trap_position: Vector2):
 	
 	
 func on_item_area_entered(item_area: Node2D):
-	
 	var item = item_area.get_parent()
+	if (item.name == "TNT_item" && get_parent().chest_isOpen):
+		return
 	if item.get_groups().find("Item") == -1:
 		return
 	
@@ -158,7 +160,7 @@ func on_item_area_entered(item_area: Node2D):
 	
 	match item.name:
 		"TNT_Item":
-			tnt_picked_up.emit()
+				tnt_picked_up.emit()
 		"Key_Item":
 			if (key_npc != null):
 				key_npc.steal_key()
