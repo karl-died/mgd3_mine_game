@@ -41,6 +41,7 @@ shape = SubResource("CircleShape2D_ctoi6")
 
 [node name="Crater" type="Sprite2D" parent="."]
 visible = false
+modulate = Color(0.695398, 0.503765, 0.289752, 1)
 z_index = -2
 z_as_relative = false
 position = Vector2(3, -3)
