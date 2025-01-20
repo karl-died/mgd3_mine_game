@@ -60,7 +60,7 @@ scroll_active = false
 tab_size = 18
 script = ExtResource("2_r07sr")
 
-[node name="GoodJobLabel2" type="RichTextLabel" parent="CanvasLayer"]
+[node name="pressContinue" type="RichTextLabel" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

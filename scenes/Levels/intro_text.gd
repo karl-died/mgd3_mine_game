@@ -3,7 +3,11 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	match InputDevice.input_device:
+		"controller": 
+			$CanvasLayer/pressContinue.text = "- press A to continue -"
+		"keyboard":
+			$CanvasLayer/pressContinue.text = "- press Spacebar to continue -"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

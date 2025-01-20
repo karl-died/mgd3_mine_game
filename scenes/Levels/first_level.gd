@@ -9,6 +9,13 @@ func _ready() -> void:
 	player.position = $PlayerSpawnPosition.position
 	$Camera2D.zoom = Vector2(0.86, 0.86)
 	$Camera2D.zoom_out(Vector2(.5, .5))
+	match InputDevice.input_device:
+		"controller":
+			$TrapInput.text = "Press the \"A\" Button to dash over the trap!"
+			$KeyInput.text = "... and press \"X\" to drop them."
+		"keyboard":
+			$TrapInput.text = "Press the Spacebar to dash over the trap!"
+			$KeyInput.text = "... and press Q to drop them."
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

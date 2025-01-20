@@ -632,7 +632,7 @@ tile_set = ExtResource("6_7fulk")
 format = 2
 layer_0/tile_data = PackedInt32Array(-65520, 0, 2, 16, 0, 3, 65552, 0, 2, 131088, 0, 3, 196624, 65536, 0, -131056, 0, 2, -65519, 196608, 2, 65553, 196608, 2, 131089, 196608, 3, 17, 196608, 3, -131055, 131072, 5, 196625, 131072, 0)
 
-[node name="Trap tutorial" type="Label" parent="."]
+[node name="TrapInput" type="Label" parent="."]
 offset_left = -1321.0
 offset_top = -584.0
 offset_right = 281.0
@@ -650,7 +650,7 @@ theme_override_fonts/font = ExtResource("20_nkhdk")
 theme_override_font_sizes/font_size = 151
 text = "... or mash it once you're caught"
 
-[node name="Key tutorial" type="Label" parent="."]
+[node name="KeyInput" type="Label" parent="."]
 offset_left = 1888.0
 offset_top = 546.0
 offset_right = 3363.0
@@ -659,7 +659,7 @@ theme_override_fonts/font = ExtResource("20_nkhdk")
 theme_override_font_sizes/font_size = 151
 text = "... and press \"X\" to drop them."
 
-[node name="Key tutorial2" type="Label" parent="."]
+[node name="Keytut" type="Label" parent="."]
 offset_left = 713.0
 offset_top = -223.0
 offset_right = 2188.0
