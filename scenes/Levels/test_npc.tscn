@@ -105,8 +105,8 @@ stream_3/stream = ExtResource("8_jwitk")
 
 [node name="NPCCharacterBody2D" type="CharacterBody2D"]
 rotation = 1.5708
-collision_layer = 9
-collision_mask = 9
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("1_r7xlq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -114,7 +114,6 @@ position = Vector2(-22.0002, -51.9999)
 rotation = 3.1442
 scale = Vector2(0.272652, 0.252901)
 shape = SubResource("CapsuleShape2D_7ynup")
-disabled = true
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 visible = false

@@ -14,6 +14,8 @@ extends Node2D
 
 var chest_isOpen = false
 
+var chase_counter = 0
+
 var explosion_timer = 11.5
 var tnt_ignited = false
 
@@ -70,6 +72,18 @@ func on_npc_reached_player():
 	player.position = $PlayerSpawnPosition.position
 	$Camera2D/ActionMusic.stop()
 	
+func on_npc_chase_ended():
+	chase_counter -= 1
+	if chase_counter == 0:
+		$Camera2D/ActionMusic.stop()
+		$Camera2D/BackgroundMusic.play()
+		
+func on_npc_chase_started():
+	if chase_counter == 0:
+		$Camera2D/ActionMusic.play()
+		$Camera2D/BackgroundMusic.stop()
+	chase_counter += 1
+	
 func on_tnt_chest_lock_area_entered(area: Area2D):
 	var parent = area.get_parent()
 	if parent.name == "PlayerRat" && area.name == "ItemPickupArea" && player.has_key:
@@ -109,9 +123,10 @@ func on_success_area_body_entered(body: Node2D):
 		$Camera2D/TextCanvasLayer/GoodJobLabel.visible = true
 		
 func on_npc_hitbox_entered(body: Node2D):
-	if body == player:
-		blackout_timer = 0
-		$Camera2D/TextCanvasLayer/YouDiedLabel.visible = true
+	#if body == player:
+	#	blackout_timer = 0
+	#	$Camera2D/TextCanvasLayer/YouDiedLabel.visible = true
+	pass
 	
 func _reset_level():
 	player.position = $PlayerSpawnPosition.position

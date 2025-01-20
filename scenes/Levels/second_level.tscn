@@ -714,7 +714,7 @@ z_index = 1
 position = Vector2(158, -100)
 scale = Vector2(0.325, 0.325)
 collision_layer = 514
-collision_mask = 521
+collision_mask = 520
 wall_min_slide_angle = 0.0
 navigation_agent = NodePath("NavigationAgent2D")
 rat = NodePath("../PlayerRat")
@@ -743,10 +743,10 @@ polygon = PackedVector2Array(21, -9.00008, 113, -44.0004, 113, 33.9996, 21, -1.0
 [node name="NPC2" parent="." node_paths=PackedStringArray("navigation_agent", "rat", "vision_area", "locations_node", "target") groups=["NPCs"] instance=ExtResource("13_b67g1")]
 modulate = Color(0.627451, 0.627451, 0.627451, 1)
 z_index = 1
-position = Vector2(158, -100)
+position = Vector2(791, -142)
 scale = Vector2(0.325, 0.325)
 collision_layer = 514
-collision_mask = 521
+collision_mask = 520
 wall_min_slide_angle = 0.0
 script = ExtResource("20_xqad8")
 navigation_agent = NodePath("NavigationAgent2D")
@@ -779,7 +779,7 @@ z_index = 1
 position = Vector2(2597, -349)
 scale = Vector2(0.325, 0.325)
 collision_layer = 514
-collision_mask = 521
+collision_mask = 520
 wall_min_slide_angle = 0.0
 script = ExtResource("20_xqad8")
 navigation_agent = NodePath("NavigationAgent2D")
@@ -919,23 +919,17 @@ position = Vector2(5356, 256)
 shape = SubResource("CircleShape2D_w87n7")
 
 [connection signal="body_entered" from="Trapdoor" to="PlayerRat" method="_on_trapdoor_body_entered"]
-[connection signal="chase_ended" from="NPC1" to="Camera2D/BackgroundMusic" method="play"]
-[connection signal="chase_ended" from="NPC1" to="Camera2D/ActionMusic" method="stop"]
+[connection signal="chase_ended" from="NPC1" to="." method="on_npc_chase_ended"]
 [connection signal="player_caught" from="NPC1" to="." method="on_npc_reached_player"]
-[connection signal="player_spotted" from="NPC1" to="Camera2D/BackgroundMusic" method="stop"]
-[connection signal="player_spotted" from="NPC1" to="Camera2D/ActionMusic" method="play"]
+[connection signal="player_spotted" from="NPC1" to="." method="on_npc_chase_started"]
 [connection signal="target_reached" from="NPC1/NavigationAgent2D" to="NPC1" method="_on_navigation_agent_2d_target_reached"]
-[connection signal="chase_ended" from="NPC2" to="Camera2D/BackgroundMusic" method="play"]
-[connection signal="chase_ended" from="NPC2" to="Camera2D/ActionMusic" method="stop"]
+[connection signal="chase_ended" from="NPC2" to="." method="on_npc_chase_ended"]
 [connection signal="player_caught" from="NPC2" to="." method="on_npc_reached_player"]
-[connection signal="player_spotted" from="NPC2" to="Camera2D/BackgroundMusic" method="stop"]
-[connection signal="player_spotted" from="NPC2" to="Camera2D/ActionMusic" method="play"]
+[connection signal="player_spotted" from="NPC2" to="." method="on_npc_chase_started"]
 [connection signal="target_reached" from="NPC2/NavigationAgent2D" to="NPC2" method="_on_navigation_agent_2d_target_reached"]
-[connection signal="chase_ended" from="NPC3" to="Camera2D/BackgroundMusic" method="play"]
-[connection signal="chase_ended" from="NPC3" to="Camera2D/ActionMusic" method="stop"]
+[connection signal="chase_ended" from="NPC3" to="." method="on_npc_chase_ended"]
 [connection signal="player_caught" from="NPC3" to="." method="on_npc_reached_player"]
-[connection signal="player_spotted" from="NPC3" to="Camera2D/BackgroundMusic" method="stop"]
-[connection signal="player_spotted" from="NPC3" to="Camera2D/ActionMusic" method="play"]
+[connection signal="player_spotted" from="NPC3" to="." method="on_npc_chase_started"]
 [connection signal="target_reached" from="NPC3/NavigationAgent2D" to="NPC3" method="_on_navigation_agent_2d_target_reached"]
 [connection signal="body_entered" from="SuccessArea" to="." method="_on_success_area_body_entered"]
 
