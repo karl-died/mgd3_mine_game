@@ -9,6 +9,7 @@ signal chase_ended
 @export var navigation_agent : NavigationAgent2D
 @export var rat : CharacterBody2D
 @export var vision_area : Polygon2D
+@export var evacuation_location : Node2D
 @export var locations_node : Node2D
 @onready var locations = locations_node.get_children()
 @export var target: Node2D = null
@@ -39,6 +40,7 @@ const footstep_interval_sec = 0.5
 var footstep_timer = footstep_interval_sec
 
 var key_item = null
+var evacuate = false
 
 
 func _ready():
@@ -100,7 +102,7 @@ func _on_navigation_agent_2d_target_reached():
 		player_caught.emit()
 
 func _on_area_2d_body_entered(body):
-	if (body == rat && !chase):
+	if (body == rat && !chase && !evacuate):
 		chase = true
 		nav_agent.set_path_postprocessing(0)
 		target = rat
@@ -137,3 +139,8 @@ func return_key():
 	key_sprite.visible = true
 	if key_item != null:
 		key_item.visible = false
+	
+func start_evacuation():
+	target = evacuation_location
+	evacuate = true
+	chase = false
