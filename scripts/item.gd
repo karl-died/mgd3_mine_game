@@ -37,3 +37,6 @@ func show_indicator():
 func hide_indicator():
 	if pickup_indicator != null:
 		pickup_indicator.visible = false
+
+func get_owner_node():
+	return parent_position_node

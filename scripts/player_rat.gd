@@ -155,12 +155,18 @@ func on_trap_entered(trap_position: Vector2):
 	
 func on_item_area_entered(item_area: Node2D):
 	var item = item_area.get_parent()
-	if (item.name == "TNT_item" && get_parent().chest_isOpen):
+	if !(item is Item):
+		return
+	if (item.name == "TNT_Item" && !get_parent().chest_isOpen):
 		return
 	if item.get_groups().find("Item") == -1:
 		return
 	
 	drop_item()
+	if key_npc != null:
+		if item.get_owner_node() == key_npc:
+			key_npc.steal_key()
+			steal_key()
 	item.pick_up(self)
 	item.hide_indicator()
 		
@@ -172,7 +178,7 @@ func on_item_area_entered(item_area: Node2D):
 				tnt_picked_up.emit()
 		"Key_Item":
 			if (key_npc != null):
-				key_npc.steal_key()
+				pass
 			
 			
 			
@@ -202,8 +208,10 @@ func steal_key():
 	key_sprite.visible = true
 	has_key = true
 	$LaughAudioPlayer.play()
+	print("stolen")
 	
 func return_key():
 	key_sprite.visible = false
 	has_key = false
 	current_item = null
+	print("returned")

@@ -67,6 +67,13 @@ func _physics_process(delta):
 	var animation_speed_scale = 0.5 + 0.001 * velocity.length()
 	anim.speed_scale = animation_speed_scale
 	key_sprite.speed_scale = animation_speed_scale
+	
+	if key_item == null:
+		key_sprite.visible = false
+	else:
+		key_sprite.visible = true
+		
+	
 	if key_sprite.visible:
 		if key_audio_player.playing == false:
 			key_audio_player.play()
@@ -107,9 +114,7 @@ func _on_item_pickup_area_entered(area: Area2D):
 			rat.return_key()
 
 func _on_key_collider_body_entered(body):
-	if (body == rat):
-		steal_key()
-		rat.steal_key()
+	pass
 
 func _on_chaserange_body_exited(body):
 	if (body == rat && chase):
