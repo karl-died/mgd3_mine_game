@@ -23,6 +23,7 @@ func _on_keyhole_area_entered(_area: Area2D) -> void:
 	remove_child($DestructibleWall)
 	player.return_key()
 	remove_child($Key_Item)
+	$UnlockAudioPlayer.play()
 
 
 func _on_trapdoor_body_entered(_body: Node2D) -> void:

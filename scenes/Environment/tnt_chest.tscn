@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1bcfxkak7vml"]
+[gd_scene load_steps=10 format=3 uid="uid://c1bcfxkak7vml"]
 
 [ext_resource type="Script" path="res://scripts/tnt_chest.gd" id="1_8ifr7"]
-[ext_resource type="Texture2D" uid="uid://cfhlpm5y46p2u" path="res://assets/Tnt_chest.png" id="2_gaqs7"]
+[ext_resource type="Texture2D" uid="uid://cfhlpm5y46p2u" path="res://assets/tnt_chest.png" id="2_gaqs7"]
 [ext_resource type="Texture2D" uid="uid://c6aywrxnnrt6c" path="res://assets/Tnt_chest_offen.png" id="3_5i4fi"]
+[ext_resource type="AudioStream" uid="uid://cle4xs2ck5iej" path="res://music/sounds/door_unlock.wav" id="4_vf6bn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tmhre"]
 atlas = ExtResource("2_gaqs7")
@@ -64,3 +65,8 @@ shape = SubResource("CircleShape2D_dw63e")
 position = Vector2(1, -2.99243)
 scale = Vector2(1.0651, 2.13182)
 shape = SubResource("RectangleShape2D_uo3af")
+
+[node name="UnlockAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_vf6bn")
+volume_db = 3.161
+bus = &"FX"

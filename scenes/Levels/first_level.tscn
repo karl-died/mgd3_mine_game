@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://bu0vx6opbaieg"]
+[gd_scene load_steps=70 format=3 uid="uid://bu0vx6opbaieg"]
 
 [ext_resource type="PackedScene" uid="uid://dndaw0nqyakur" path="res://scenes/Environment/trapdoor.tscn" id="1_1adv3"]
 [ext_resource type="Script" path="res://scenes/Levels/first_level.gd" id="1_8m8qn"]
@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://x2jv3xq5ni5o" path="res://music/sounds/soundscape_02.wav" id="14_mkp4a"]
 [ext_resource type="PackedScene" uid="uid://bdaj8nk3swe0f" path="res://scenes/Environment/mouse_trap.tscn" id="16_rjsop"]
 [ext_resource type="FontFile" uid="uid://cp37g0wstna5g" path="res://assets/Fonts/Bahianita-Regular.ttf" id="20_nkhdk"]
+[ext_resource type="AudioStream" uid="uid://cle4xs2ck5iej" path="res://music/sounds/door_unlock.wav" id="21_3evki"]
 [ext_resource type="PackedScene" uid="uid://dgclyijh1l4ql" path="res://scenes/Items/key_item.tscn" id="21_fnj37"]
 [ext_resource type="PackedScene" uid="uid://bpmcwyw8flk6i" path="res://scenes/Environment/locked_door.tscn" id="23_8g2v1"]
 
@@ -666,6 +667,12 @@ offset_bottom = -41.0
 theme_override_fonts/font = ExtResource("20_nkhdk")
 theme_override_font_sizes/font_size = 151
 text = "Approach items to pick them up..."
+
+[node name="UnlockAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(4216, 240)
+stream = ExtResource("21_3evki")
+volume_db = 4.52
+bus = &"FX"
 
 [connection signal="body_entered" from="Trapdoor" to="." method="_on_trapdoor_body_entered"]
 [connection signal="body_entered" from="Trapdoor" to="PlayerRat" method="_on_trapdoor_body_entered"]

@@ -201,9 +201,9 @@ func _on_trapdoor_body_entered(body):
 func steal_key():
 	key_sprite.visible = true
 	has_key = true
+	$LaughAudioPlayer.play()
 	
 func return_key():
 	key_sprite.visible = false
 	has_key = false
-	print("returned key")
 	current_item = null

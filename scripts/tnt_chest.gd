@@ -16,6 +16,7 @@ func _process(_delta):
 	
 func open():
 	sprite.play("open")
+	$UnlockAudioPlayer.play()
 	z_index = 0
 	lock_area.collision_layer = 0
 	static_body.collision_layer = 0
