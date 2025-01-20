@@ -20,5 +20,6 @@ func pick_up(parent: Node2D):
 	
 func explode():
 	sprite.visible = false
+	$Crater.visible = true
 	pickup_indicator.visible = false
 	collision_area.collision_layer = 0

@@ -54,7 +54,7 @@ func _physics_process(delta):
 	var next_dir = (nav_agent.get_next_path_position() - position).normalized()
 	if (position.distance_to(target.position) < 100 && target == rat):
 		current_speed = lerp(current_speed, 0.0, .1)
-	elif (target == rat):
+	elif (target == rat || evacuate):
 		current_speed = lerp(current_speed, running_speed, .1)
 		rotation=lerp_angle(rotation, atan2(next_dir.y, next_dir.x), .1)
 	else:

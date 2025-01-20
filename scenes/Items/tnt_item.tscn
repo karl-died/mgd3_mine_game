@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckocvqggld74o"]
+[gd_scene load_steps=7 format=3 uid="uid://ckocvqggld74o"]
 
 [ext_resource type="Script" path="res://scripts/tnt_item.gd" id="1_5vguq"]
 [ext_resource type="Texture2D" uid="uid://bg3d757lldc6v" path="res://assets/tnt.png" id="2_3xwmr"]
 [ext_resource type="PackedScene" uid="uid://bcuwrnihv8iik" path="res://scenes/Items/item_pickup_indicator.tscn" id="3_o3ral"]
+[ext_resource type="Texture2D" uid="uid://dxt454u83guu6" path="res://scripts/crater.png" id="4_6pfht"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_23k7u"]
 
@@ -37,3 +38,10 @@ scale = Vector2(0.25, 0.25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DestructionArea"]
 shape = SubResource("CircleShape2D_ctoi6")
+
+[node name="Crater" type="Sprite2D" parent="."]
+visible = false
+z_index = -2
+z_as_relative = false
+position = Vector2(3, -3)
+texture = ExtResource("4_6pfht")
