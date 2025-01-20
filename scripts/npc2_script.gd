@@ -69,6 +69,10 @@ func _physics_process(delta):
 	if footstep_timer < 0:
 		footstep_timer = footstep_interval_sec * animation_speed_scale
 		footstep_audio_player.play()
+		
+	if chase:
+		if (rat.position - position).length() < 100:
+			player_caught.emit()
 	
 	footstep_timer -= delta
 	move_and_slide()
